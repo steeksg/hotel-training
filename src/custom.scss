@@ -1,0 +1,38 @@
+$theme-colors: (
+  "primary": #bc9cff,
+);
+
+@import "~bootstrap/scss/bootstrap";
+
+button {
+    &:focus{
+        outline: none;
+    }
+}
+
+.btn {
+  border-radius: 22px;
+  border-width: 2px;
+  font-weight: bold;
+
+  &-primary {
+    color: white;
+  }
+
+  &-outline-primary, &-primary {
+    &:hover,
+    &:not(:disabled):not(.disabled):active {
+      color: white;
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
