@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
-
-import Logo from "./Logo.svg";
+import LogoApp from "../logo/logo";
 
 export default function Navibar() {
   return (
@@ -9,20 +8,13 @@ export default function Navibar() {
       <Navbar bg="light" variant="light" collapseOnSelect expand="md">
         <Container>
           <Navbar.Brand href="/">
-            {/* TODO: Fix with routing */}
-            <img
-              alt="Logo"
-              src={Logo}
-              max-width="40"
-              max-height="40"
-              className="d-inline-block align-top"
-            />
+            <LogoApp />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ml-auto align-items-center">
+            <Nav className="ml-auto align-items-md-center">
               <Nav.Link href="/about">About</Nav.Link>
               <NavDropdown title="Services" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/roomServices">

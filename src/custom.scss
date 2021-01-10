@@ -1,13 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 $theme-colors: (
   "primary": #bc9cff,
 );
 
 @import "~bootstrap/scss/bootstrap";
 
+body {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(31, 32, 65, 0.5);
+}
+
 button {
-    &:focus{
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
+
+h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  color: black;
 }
 
 .btn {
@@ -17,9 +40,11 @@ button {
 
   &-primary {
     color: white;
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
   }
 
-  &-outline-primary, &-primary {
+  &-outline-primary,
+  &-primary {
     &:hover,
     &:not(:disabled):not(.disabled):active {
       color: white;

@@ -1,4 +1,10 @@
 .formSearchRoom {
-    min-width: 300px;
-    max-width: 380px;
+  min-width: 290px;
+  max-width: 380px;
+}
+
+.react-datepicker__input-container {
+    input {
+        width: 100%;
+    }
 }
