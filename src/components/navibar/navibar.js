@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
 import LogoApp from "../logo/logo";
 
+import { ModalLogIn, ModalSignUp } from "./modals";
+
+import "./navibar.scss";
+
 export default function Navibar() {
+  const [showLogIn, setShowLogIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+
+  const handleCloseLogIn = () => {
+    setShowLogIn(false);
+  };
+  const handleClickLogIn = () => {
+    setShowLogIn(true);
+  };
+  const handleCloseSignUp = () => {
+    setShowSignUp(false);
+  };
+  const handleClickSignUp = () => {
+    setShowSignUp(true);
+  };
+
   return (
     <>
       <Navbar bg="light" variant="light" collapseOnSelect expand="md">
@@ -32,12 +52,18 @@ export default function Navibar() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/contract">Contract</NavDropdown.Item>
               </NavDropdown>
-              <Button variant="outline-primary m-2">LOG IN</Button>
-              <Button variant="primary m-2">SIGN UP</Button>
+              <Button variant="outline-primary m-2" onClick={handleClickLogIn}>
+                LOG IN
+              </Button>
+              <Button variant="primary m-2" onClick={handleClickSignUp}>
+                SIGN UP
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <ModalLogIn showLogIn={showLogIn} handleClose={handleCloseLogIn} />
+      <ModalSignUp showSignUp={showSignUp} handleClose={handleCloseSignUp} />
     </>
   );
 }

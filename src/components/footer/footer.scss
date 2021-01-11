@@ -1,10 +1,13 @@
 .footerTop {
-    box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
-    // min-height: 370px;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+  box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-.footerBottom{
-    min-height: 70px;
+.footerBottom {
+  min-height: 70px;
+
+  &--icons {
+    color: #bc9cff;
+  }
 }

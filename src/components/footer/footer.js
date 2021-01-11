@@ -102,7 +102,7 @@ export default function Footer() {
         <div className="align-self-center">
           Copyright © 2018 Toxin a hotel. All rights are cleared.
         </div>
-        <div className="align-self-center d-flex flex-row">
+        <div className="align-self-center d-flex flex-row footerBottom--icons">
           <div className="align-self-center">
             <FontAwesomeIcon icon={faTwitter} size="2x" />
           </div>
