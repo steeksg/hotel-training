@@ -1,6 +1,12 @@
 import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import LogoApp from "../logo/logo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTwitter,
+  faInstagram,
+  faFacebookSquare,
+} from "@fortawesome/free-brands-svg-icons";
 
 import "./footer.scss";
 
@@ -61,7 +67,17 @@ export default function Footer() {
         <div className="align-self-center">
           Copyright © 2018 Toxin a hotel. All rights are cleared.
         </div>
-        <div className="align-self-center">ICONS</div>
+        <div className="align-self-center d-flex flex-row">
+          <div className="align-self-center">
+            <FontAwesomeIcon icon={faTwitter} size="2x"/>
+          </div>
+          <div className="align-self-center ml-2">
+            <FontAwesomeIcon icon={faFacebookSquare} size="2x"/>
+          </div>
+          <div className="align-self-center ml-2">
+            <FontAwesomeIcon icon={faInstagram} size="2x"/>
+          </div>
+        </div>
       </Container>
     </div>
   );
