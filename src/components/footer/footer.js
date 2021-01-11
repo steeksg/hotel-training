@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Nav } from "react-bootstrap";
 import LogoApp from "../logo/logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,9 +17,12 @@ export default function Footer() {
         <Container>
           <Row>
             <Col className="col-12 col-md-3">
-              <div className="mb-3">
-                <LogoApp />
-              </div>
+              <Nav>
+                <Nav.Link href="/" className="mb-3">
+                  <LogoApp />
+                </Nav.Link>
+              </Nav>
+
               <div className="mb-3">
                 Booking rooms in the best hotel of 2019 according to the
                 association "Hotel views»
@@ -29,28 +32,60 @@ export default function Footer() {
               <div className="mb-3">
                 <h4>Navigation</h4>
               </div>
-              <div className="mb-3">About Us</div>
-              <div className="mb-3">New</div>
-              <div className="mb-3">Support</div>
-              <div className="mb-3">Services</div>
+
+              <Nav>
+                <Nav.Link href="/about" className="mb-3 p-0 w-100">
+                  About Us
+                </Nav.Link>
+                <Nav.Link href="/news" className="mb-3 p-0 w-100">
+                  News
+                </Nav.Link>
+                <Nav.Link href="/support" className="mb-3 p-0 w-100">
+                  Support
+                </Nav.Link>
+                <Nav.Link href="/roomServices" className="mb-3 p-0 w-100">
+                  Services
+                </Nav.Link>
+              </Nav>
             </Col>
             <Col className="col-12 col-md-2">
               <div className="mb-3">
                 <h4>About Us</h4>
               </div>
-              <div className="mb-3">About services</div>
-              <div className="mb-3">Our team</div>
-              <div className="mb-3">Vacancy</div>
-              <div className="mb-3">Investors</div>
+
+              <Nav>
+                <Nav.Link href="/about" className="mb-3 p-0 w-100">
+                  About services
+                </Nav.Link>
+                <Nav.Link href="/team" className="mb-3 p-0 w-100">
+                  Our team
+                </Nav.Link>
+                <Nav.Link href="/vacancy" className="mb-3 p-0 w-100">
+                  Vacancy
+                </Nav.Link>
+                <Nav.Link href="/investors" className="mb-3 p-0 w-100">
+                  Investors
+                </Nav.Link>
+              </Nav>
             </Col>
+
             <Col className="col-12 col-md-2">
               <div className="mb-3">
                 <h4>Support</h4>
               </div>
-              <div className="mb-3">Docs</div>
-              <div className="mb-3">Communities</div>
-              <div className="mb-3">Contacts</div>
+              <Nav>
+                <Nav.Link href="/docs" className="mb-3 p-0 w-100">
+                  Docs
+                </Nav.Link>
+                <Nav.Link href="/communities" className="mb-3 p-0 w-100">
+                  Communities
+                </Nav.Link>
+                <Nav.Link href="/contacts" className="mb-3 p-0 w-100">
+                  Contacts
+                </Nav.Link>
+              </Nav>
             </Col>
+
             <Col className="col-12 col-md-3">
               <div>
                 <h4 className="mb-3">Subscribe</h4>
@@ -69,13 +104,13 @@ export default function Footer() {
         </div>
         <div className="align-self-center d-flex flex-row">
           <div className="align-self-center">
-            <FontAwesomeIcon icon={faTwitter} size="2x"/>
+            <FontAwesomeIcon icon={faTwitter} size="2x" />
           </div>
           <div className="align-self-center ml-2">
-            <FontAwesomeIcon icon={faFacebookSquare} size="2x"/>
+            <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
           </div>
           <div className="align-self-center ml-2">
-            <FontAwesomeIcon icon={faInstagram} size="2x"/>
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
           </div>
         </div>
       </Container>
