@@ -18,7 +18,7 @@ export default function Footer() {
           <Row>
             <Col className="col-12 col-md-3">
               <Nav>
-                <Nav.Link href="/" className="mb-3">
+                <Nav.Link href="/" className="mb-3 p-0">
                   <LogoApp />
                 </Nav.Link>
               </Nav>
@@ -34,16 +34,28 @@ export default function Footer() {
               </div>
 
               <Nav>
-                <Nav.Link href="/about" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/about"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   About Us
                 </Nav.Link>
-                <Nav.Link href="/news" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/news"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   News
                 </Nav.Link>
-                <Nav.Link href="/support" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/support"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Support
                 </Nav.Link>
-                <Nav.Link href="/roomServices" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/roomServices"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Services
                 </Nav.Link>
               </Nav>
@@ -54,16 +66,28 @@ export default function Footer() {
               </div>
 
               <Nav>
-                <Nav.Link href="/about" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/about"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   About services
                 </Nav.Link>
-                <Nav.Link href="/team" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/team"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Our team
                 </Nav.Link>
-                <Nav.Link href="/vacancy" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/vacancy"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Vacancy
                 </Nav.Link>
-                <Nav.Link href="/investors" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/investors"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Investors
                 </Nav.Link>
               </Nav>
@@ -74,13 +98,22 @@ export default function Footer() {
                 <h4>Support</h4>
               </div>
               <Nav>
-                <Nav.Link href="/docs" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/docs"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Docs
                 </Nav.Link>
-                <Nav.Link href="/communities" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/communities"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Communities
                 </Nav.Link>
-                <Nav.Link href="/contacts" className="mb-3 p-0 w-100">
+                <Nav.Link
+                  href="/contacts"
+                  className="mb-3 p-0 w-100 footer--navLink"
+                >
                   Contacts
                 </Nav.Link>
               </Nav>
@@ -102,15 +135,21 @@ export default function Footer() {
         <div className="align-self-center">
           Copyright © 2018 Toxin a hotel. All rights are cleared.
         </div>
-        <div className="align-self-center d-flex flex-row footerBottom--icons">
+        <div className="align-self-center d-flex flex-row footerBottom--icons ml-2">
           <div className="align-self-center">
-            <FontAwesomeIcon icon={faTwitter} size="2x" />
+            <a href="https://twitter.com/">
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
+            </a>
           </div>
           <div className="align-self-center ml-2">
-            <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
+            <a href="https://www.facebook.com/">
+              <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
+            </a>
           </div>
           <div className="align-self-center ml-2">
-            <FontAwesomeIcon icon={faInstagram} size="2x" />
+            <a href="https://www.instagram.com/">
+              <FontAwesomeIcon icon={faInstagram} size="2x" />
+            </a>
           </div>
         </div>
       </Container>

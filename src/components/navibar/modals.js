@@ -19,7 +19,12 @@ export function ModalLogIn(props) {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicLogIn">
-              <Button variant="primary" className="modalLogIn--buttonLogIn w-100">LOG IN</Button>
+                <Button
+                  variant="primary"
+                  className="modalLogIn--buttonLogIn w-100"
+                >
+                  LOG IN
+                </Button>
               </Form.Group>
 
               <Form.Group
@@ -29,7 +34,12 @@ export function ModalLogIn(props) {
                 <div className="align-self-center">
                   Don't have a Toxin account?
                 </div>
-                <Button variant="outline-primary" className="modalLogIn--buttonSignUp">SIGN UP</Button>
+                <Button
+                  variant="outline-primary"
+                  className="modalLogIn--buttonSignUp"
+                >
+                  SIGN UP
+                </Button>
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -49,23 +59,27 @@ export function ModalSignUp(props) {
         onHide={handleClose}
         className="modalSignUp"
       >
-        <Modal.Header>
-          <Modal.Title>Sign Up</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
+          <h3 className="mb-4">Sign Up</h3>
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control type="text" placeholder="First name" />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter password" />
+              <Form.Control type="text" placeholder="Second name" />
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Check type="checkbox" label="Remember me" />
+            <Form.Group controlId="formBasicGender">
+              <Form.Check type="radio" id="radioGenderMan" name="radioGender">
+                <Form.Check.Input type="radio" />
+                <Form.Check.Label variant="primary">Man</Form.Check.Label>
+              </Form.Check>
+
+              <Form.Check type="radio" id="radioGenderWoman" name="radioGender">
+                <Form.Check.Input type="radio" />
+                <Form.Check.Label variant="primary">Woman</Form.Check.Label>
+              </Form.Check>
             </Form.Group>
           </Form>
         </Modal.Body>
