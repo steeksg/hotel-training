@@ -1,5 +1,13 @@
 .modalLogIn {
+  overflow-y: scroll;
   &--buttonSignUp {
+      min-width: 100px !important;
+  }
+}
+
+.modalSignUp {
+  overflow-y: scroll;
+  &--buttonLogIn {
       min-width: 100px !important;
   }
 }

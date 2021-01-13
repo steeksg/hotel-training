@@ -62,8 +62,8 @@ export default function Navibar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <ModalLogIn showLogIn={showLogIn} handleClose={handleCloseLogIn} />
-      <ModalSignUp showSignUp={showSignUp} handleClose={handleCloseSignUp} />
+      <ModalLogIn showLogIn={showLogIn} setShowSignUp={handleClickSignUp} handleClose={handleCloseLogIn} />
+      <ModalSignUp showSignUp={showSignUp} setShowLogIn={handleClickLogIn}  handleClose={handleCloseSignUp} />
     </>
   );
 }
