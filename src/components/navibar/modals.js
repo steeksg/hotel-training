@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Form, Button, Container } from "react-bootstrap";
-
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import CustomDatepicker from "../customDatepicker/customDatepicker";
 
 export function ModalLogIn(props) {
   const { showLogIn, handleClose } = props;
@@ -26,7 +24,7 @@ export function ModalLogIn(props) {
           <Modal.Body>
             <h3 className="mb-4">Log In</h3>
             <Form>
-              <Form.Group className="mb-1" controlId="formBasicEmail">
+              <Form.Group className="mb-1" controlId="formLogInEmail">
                 <Form.Control type="email" placeholder="Email" />
               </Form.Group>
 
@@ -68,7 +66,7 @@ export function ModalLogIn(props) {
 
 export function ModalSignUp(props) {
   const { showSignUp, handleClose } = props;
-  const [birthDate, setBirthDate] = useState(new Date());
+  const [birthDate, setBirthDate] = useState(null);
 
   const { setShowLogIn } = props;
 
@@ -89,15 +87,15 @@ export function ModalSignUp(props) {
           <Modal.Body>
             <h3 className="mb-4">Sign Up</h3>
             <Form>
-              <Form.Group controlId="formBasicEmail" className="mb-1">
+              <Form.Group controlId="formSignUpName" className="mb-1">
                 <Form.Control type="text" placeholder="First name" />
               </Form.Group>
 
-              <Form.Group controlId="formBasicPassword" className="mb-2">
+              <Form.Group controlId="formSignUpSecondNAme" className="mb-2">
                 <Form.Control type="text" placeholder="Second name" />
               </Form.Group>
 
-              <Form.Group controlId="formBasicGender" className="d-flex mb-3">
+              <Form.Group controlId="formSignUpcGender" className="d-flex mb-3">
                 <div className="checkboxContainer mr-2">
                   <Form.Check type="radio" id="radioGenderMan">
                     <Form.Check.Input type="radio" name="radioGender" />
@@ -119,13 +117,10 @@ export function ModalSignUp(props) {
                 <Form.Label className="mb-0">
                   <h4 className="mb-1">Date of birth</h4>
                 </Form.Label>
-                <DatePicker
-                  selected={birthDate}
-                  onChange={(date) => setBirthDate(date)}
-                />
+                <CustomDatepicker date={birthDate} setDate={setBirthDate} />
               </Form.Group>
 
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group controlId="formSignUpEmail">
                 <Form.Label className="mb-0">
                   <h4>Service login data</h4>
                 </Form.Label>
@@ -134,6 +129,8 @@ export function ModalSignUp(props) {
                   placeholder="Email"
                   className="mb-1"
                 />
+              </Form.Group>
+              <Form.Group controlId="formSignUpPassword">
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
 
@@ -159,7 +156,6 @@ export function ModalSignUp(props) {
                 className="d-flex justify-content-between"
               >
                 <div className="align-self-center">
-                  {/* Already have an account on toxin? */}
                   Have an account on toxin?
                 </div>
                 <Button
