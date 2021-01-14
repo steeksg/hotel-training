@@ -17,6 +17,7 @@ import InvestorsPage from "./pages/investors";
 import DocsPage from "./pages/docs";
 import ContactsPage from "./pages/contacts";
 import CommunitiesPage from "./pages/communities";
+import RoomsPage from "./pages/rooms";
 
 import Footer from "./components/footer/footer";
 
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/docs" component={DocsPage} />
           <Route path="/contacts" component={ContactsPage} />
           <Route path="/communities" component={CommunitiesPage} />
+          <Route path="/rooms" component={RoomsPage} />
         </Switch>
       </Router>
       <Footer />

@@ -3,6 +3,8 @@ import React from "react";
 import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 
+// TODO: Make full refactoring
+
 import "./customDatepicker.scss";
 
 export default function CustomDatepicker(props) {

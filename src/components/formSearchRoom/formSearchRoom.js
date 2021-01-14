@@ -59,7 +59,7 @@ export default function FormSearchRoom() {
 
           <Row className="mt-3">
             <Col>
-              <Button variant="primary" type="submit" className="w-100">
+              <Button href='/rooms' variant="primary" type="submit" className="w-100">
                 FIND ROOMS
               </Button>
             </Col>
