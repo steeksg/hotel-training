@@ -97,14 +97,14 @@ export function ModalSignUp(props) {
 
               <Form.Group controlId="formSignUpcGender" className="d-flex mb-3">
                 <div className="checkboxContainer mr-2">
-                  <Form.Check type="radio" id="radioGenderMan">
+                  <Form.Check type="radio" id="radioGenderMan" custom>
                     <Form.Check.Input type="radio" name="radioGender" />
                     <Form.Check.Label>Man</Form.Check.Label>
                   </Form.Check>
                 </div>
                 <div className="checkboxContainer">
-                  <Form.Check type="radio" id="radioGenderWoman">
-                    <Form.Check.Input type="radio" name="radioGender" />
+                  <Form.Check type="radio" id="radioGenderWoman" custom>
+                    <Form.Check.Input type="radio" name="radioGender"/>
                     <Form.Check.Label>Woman</Form.Check.Label>
                   </Form.Check>
                 </div>

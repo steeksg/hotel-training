@@ -1,12 +1,15 @@
-@import '~react-datepicker/src/stylesheets/datepicker';
+@import "~react-datepicker/src/stylesheets/datepicker";
 
 .react-datepicker {
-
   color: #000;
   border: 1px solid #aeaeae;
   border-radius: 0.3rem;
   display: inline-block;
   position: relative;
+
+  &-wrapper {
+    width: 100%;
+  }
 
   &__input-container input {
     display: block;
