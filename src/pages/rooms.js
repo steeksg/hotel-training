@@ -33,7 +33,7 @@ export default function RoomsPage() {
     <>
       <Container>
         <Row>
-          <Col className="col-12 col-md-3 col">
+          <Col className="col-12 col-md-3 col pt-3">
             <Form>
               <Form.Group controlId="controlDateOfStay">
                 <h4>dates of stay</h4>
@@ -76,9 +76,20 @@ export default function RoomsPage() {
                 <Form.Label className="mb-0 d-flex justify-content-between">
                   <h4>Rules</h4>
                 </Form.Label>
-                <Form.Check type="checkbox" label="Can smoke" id="checkSmoke" />
-                <Form.Check type="checkbox" label="With pets" id="checkPets" />
                 <Form.Check
+                  custom
+                  type="checkbox"
+                  label="Can smoke"
+                  id="checkSmoke"
+                />
+                <Form.Check
+                  custom
+                  type="checkbox"
+                  label="With pets"
+                  id="checkPets"
+                />
+                <Form.Check
+                  custom
                   type="checkbox"
                   label="Guests (no more than ten people)"
                   id="checkGuests"
@@ -89,16 +100,33 @@ export default function RoomsPage() {
                 <Form.Label className="mb-0 d-flex justify-content-between">
                   <h4>Availability</h4>
                 </Form.Label>
-                <Form.Check
-                  type="checkbox"
-                  label="Wide corridor"
-                  id="checkCorridor"
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Helper for disabled"
-                  id="checkHelper"
-                />
+                <Row>
+                  <Col className="col-1">
+                    <Form.Check custom type="checkbox" id="checkCorridor" />
+                  </Col>
+                  <Col>
+                    <span className="font-weight-bold">Wide corridor</span>
+                  </Col>
+                </Row>
+
+                <Form.Label>
+                  The width of the corridors in the room is at least 91 cm.
+                </Form.Label>
+
+                <Row>
+                  <Col className="col-1">
+                    <Form.Check custom type="checkbox" id="checkHelper" />
+                  </Col>
+                  <Col>
+                    <span className="font-weight-bold">
+                      Helper for disabled
+                    </span>
+                  </Col>
+                </Row>
+
+                <Form.Label>
+                  The width of the corridors in the room is at least 91 cm.
+                </Form.Label>
               </Form.Group>
 
               <Form.Group controlId="controlSelectComfort">
@@ -116,7 +144,7 @@ export default function RoomsPage() {
               </Form.Group>
             </Form>
           </Col>
-          <Col className="col-12 col-md-9 col">
+          <Col className="col-12 col-md-9 col pt-3">
             <Row>
               <Col>
                 <h3>The numbers we have selected for you</h3>
@@ -124,7 +152,7 @@ export default function RoomsPage() {
             </Row>
             <Row>
               <Col>
-                <CardColumns>
+                <CardColumns className="d-flex flex-wrap justify-content-center">
                   {testData.map((room) => {
                     return (
                       <CardRoom
