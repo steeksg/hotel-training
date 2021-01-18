@@ -3,6 +3,7 @@ import { Container, Row, Col, CardColumns, Form } from "react-bootstrap";
 import CardRoom from "../components/cardRoom/cardRoom";
 import CustomDatepicker from "../components/customDatepicker/customDatepicker";
 import CustomRange from "../components/customRange/customRange";
+import SelectGuests from "../components/selectGuests/selectGuests";
 
 const testData = [
   { number: 1, price: 200, rating: 3, reviews: 1 },
@@ -133,14 +134,15 @@ export default function RoomsPage() {
                 <Form.Label className="mb-0">
                   <h4>Comfort</h4>
                 </Form.Label>
-                <Form.Control as="select">
+                {/* <Form.Control as="select">
                   <option>Comfort</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
                   <option>5</option>
-                </Form.Control>
+                </Form.Control> */}
+                <SelectGuests />
               </Form.Group>
             </Form>
           </Col>
