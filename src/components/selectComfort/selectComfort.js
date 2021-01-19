@@ -7,7 +7,7 @@ import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import "./selectComfort.scss";
 
 export default function SelectComfort(props) {
-  const [value, setValue] = useState("Оptional");
+  const [value, setValue] = useState("Optional");
   const [show, setShow] = useState(false);
   const [countBedrooms, setCountBedrooms] = useState(0);
   const [countBed, setCountBed] = useState(0);

@@ -23,6 +23,8 @@ export default function FormSearchRoom() {
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
+                  startDate={startDate}
+                  endDate={endDate}
                 />
               </Form.Group>
             </Col>
@@ -34,6 +36,8 @@ export default function FormSearchRoom() {
                 <DatePicker
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
+                  startDate={startDate}
+                  endDate={endDate}
                 />
               </Form.Group>
             </Col>
