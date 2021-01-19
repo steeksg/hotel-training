@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col, Container} from "react-bootstrap";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
+import SelectGuests from "../selectGuests/selectGuests";
 import "./formSearchRoom.scss";
 
 export default function FormSearchRoom() {
@@ -49,21 +49,19 @@ export default function FormSearchRoom() {
                 <Form.Label className="mb-0">
                   <h4>Count guests</h4>
                 </Form.Label>
-                <Form.Control as="select">
-                  <option>How much guests</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
+                <SelectGuests />
               </Form.Group>
             </Col>
           </Row>
 
           <Row className="mt-3">
             <Col>
-              <Button href='/rooms' variant="primary" type="submit" className="w-100">
+              <Button
+                href="/rooms"
+                variant="primary"
+                type="submit"
+                className="w-100"
+              >
                 FIND ROOMS
               </Button>
             </Col>
