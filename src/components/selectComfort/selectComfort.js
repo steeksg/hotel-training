@@ -4,29 +4,29 @@ import { Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
-import "./selectGuests.scss";
+import "./selectComfort.scss";
 
-export default function SelectGuests(props) {
-  const [value, setValue] = useState("How much guests?");
+export default function SelectComfort(props) {
+  const [value, setValue] = useState("Оptional");
   const [show, setShow] = useState(false);
-  const [countAdult, setCountAdult] = useState(0);
-  const [countChildren, setCountChildren] = useState(0);
-  const [countBabies, setCountBabies] = useState(0);
+  const [countBedrooms, setCountBedrooms] = useState(0);
+  const [countBed, setCountBed] = useState(0);
+  const [countBathrooms, setCountBathrooms] = useState(0);
 
-  useEffect(() => {
-    let countAllGuests = countAdult + countChildren + countBabies;
+  // useEffect(() => {
+  //   let countAllGuests = countBedrooms + countBed + countBathrooms;
 
-    setValue(
-      !!countAllGuests
-        ? `${countAdult + countChildren + countBabies} guests`
-        : "How much guests?"
-    );
-  }, [countAdult, countChildren, countBabies]);
+  //   setValue(
+  //     !!countAllGuests
+  //       ? `${countBedrooms + countBed + countBathrooms} comforts`
+  //       : "How much guests?"
+  //   );
+  // }, [countBedrooms, countBed, countBathrooms]);
 
   const ContentItem = (props) => {
     const { title, count, setCount } = props;
     return (
-      <Row className="selectGuests--contentItem d-flex align-items-center">
+      <Row className="selectComfort--contentItem d-flex align-items-center">
         <Col>
           <h4>{title}</h4>
         </Col>
@@ -42,8 +42,8 @@ export default function SelectGuests(props) {
     return (
       <div
         onClick={action}
-        className={`selectGuests--counterButton ${
-          isDisabled && "selectGuests--counterButton-disabled"
+        className={`selectComfort--counterButton ${
+          isDisabled && "selectComfort--counterButton-disabled"
         }`}
       >
         {type}
@@ -82,7 +82,7 @@ export default function SelectGuests(props) {
           type="-"
           action={() => handleChangeCount(count - 1)}
         />
-        <h4 className="selectGuests--counterValue">{count}</h4>
+        <h4 className="selectComfort--counterValue">{count}</h4>
         <CounterButton
           isDisabled={plusIsDisabled}
           type="+"
@@ -93,16 +93,16 @@ export default function SelectGuests(props) {
   };
 
   const clearAll = () => {
-    setCountAdult(0);
-    setCountChildren(0);
-    setCountBabies(0);
+    setCountBedrooms(0);
+    setCountBed(0);
+    setCountBathrooms(0);
   };
 
   return (
     <div>
       <div
-        className={`form-control selectGuests position-relative ${
-          show && "selectGuests-expand"
+        className={`form-control selectComfort position-relative ${
+          show && "selectComfort-expand"
         }`}
         onClick={() => {
           setShow(!show);
@@ -118,11 +118,11 @@ export default function SelectGuests(props) {
               type="text"
               // placeholder="How much guests?"
               value={value}
-              className="selectGuests--input"
+              className="selectComfort--input"
             />
           </Col>
           <Col className="col-2 d-flex justify-content-end">
-            <div className="selectGuests--toggle">
+            <div className="selectComfort--toggle">
               <FontAwesomeIcon
                 icon={show ? faAngleUp : faAngleDown}
                 size="1x"
@@ -133,31 +133,27 @@ export default function SelectGuests(props) {
       </div>
 
       <div
-        className={`selectGuests--content ${
-          show && "selectGuests--content-show"
+        className={`selectComfort--content ${
+          show && "selectComfort--content-show"
         }`}
       >
         <ContentItem
-          title="adults"
-          count={countAdult}
-          setCount={setCountAdult}
+          title="bedrooms"
+          count={countBedrooms}
+          setCount={setCountBedrooms}
         />
+        <ContentItem title="bed" count={countBed} setCount={setCountBed} />
         <ContentItem
-          title="children"
-          count={countChildren}
-          setCount={setCountChildren}
-        />
-        <ContentItem
-          title="babies"
-          count={countBabies}
-          setCount={setCountBabies}
+          title="bathrooms"
+          count={countBathrooms}
+          setCount={setCountBathrooms}
         />
 
         <Row>
           <Col>
             <Button
               variant="outline-primary"
-              className="selectGuests--buttonFooter"
+              className="selectComfort--buttonFooter"
               onClick={() => clearAll()}
             >
               CLEAR
@@ -166,7 +162,7 @@ export default function SelectGuests(props) {
           <Col className="d-flex justify-content-end">
             <Button
               variant="outline-primary"
-              className="selectGuests--buttonFooter"
+              className="selectComfort--buttonFooter"
               onClick={() => {
                 setShow(!show);
               }}

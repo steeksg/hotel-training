@@ -15,7 +15,7 @@ export default function FormSearchRoom() {
         <Container>
           <h3>Will find rooms according to your wishes</h3>
           <Row className="mt-3">
-            <Col>
+            <Col className="col-12 col-sm-6">
               <Form.Group controlId="formDateArrive">
                 <Form.Label className="mb-0">
                   <h4>ARRIVE</h4>
@@ -26,7 +26,7 @@ export default function FormSearchRoom() {
                 />
               </Form.Group>
             </Col>
-            <Col>
+            <Col className="col-12 col-sm-6">
               <Form.Group controlId="formDateDeparture">
                 <Form.Label className="mb-0">
                   <h4>DEPARTURE</h4>
