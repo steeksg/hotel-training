@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Form, Button, Container } from "react-bootstrap";
-import CustomDatepicker from "../customDatepicker/customDatepicker";
+import DatePicker from "react-datepicker";
 
 export function ModalLogIn(props) {
   const { showLogIn, handleClose } = props;
@@ -104,7 +104,7 @@ export function ModalSignUp(props) {
                 </div>
                 <div className="checkboxContainer">
                   <Form.Check type="radio" id="radioGenderWoman" custom>
-                    <Form.Check.Input type="radio" name="radioGender"/>
+                    <Form.Check.Input type="radio" name="radioGender" />
                     <Form.Check.Label>Woman</Form.Check.Label>
                   </Form.Check>
                 </div>
@@ -117,7 +117,14 @@ export function ModalSignUp(props) {
                 <Form.Label className="mb-0">
                   <h4 className="mb-1">Date of birth</h4>
                 </Form.Label>
-                <CustomDatepicker date={birthDate} setDate={setBirthDate} />
+                <DatePicker
+                  showPopperArrow={false}
+                  closeOnScroll={true}
+                  selected={birthDate}
+                  onChange={(birthDate) => setBirthDate(birthDate)}
+                  placeholderText="DD.MM.YYYY"
+                  dateFormat="dd.MM.yyyy"
+                />
               </Form.Group>
 
               <Form.Group controlId="formSignUpEmail">

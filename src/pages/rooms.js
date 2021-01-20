@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col, CardColumns, Form } from "react-bootstrap";
 import CardRoom from "../components/cardRoom/cardRoom";
-import CustomDatepicker from "../components/customDatepicker/customDatepicker";
+// import CustomDatepicker from "../components/customDatepicker/customDatepicker";
+import DatePicker from "react-datepicker";
 import CustomRange from "../components/customRange/customRange";
 import SelectGuests from "../components/selectGuests/selectGuests";
 import SelectComfort from "../components/selectComfort/selectComfort";
@@ -23,7 +24,7 @@ const testData = [
 
 export default function RoomsPage() {
   const [startDate, setStartDate] = useState(null);
-  // const [endDate, setEndDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const [minRange, setMinRange] = useState(100);
   const [maxRange, setMaxRange] = useState(1000);
@@ -39,7 +40,15 @@ export default function RoomsPage() {
             <Form>
               <Form.Group controlId="controlDateOfStay">
                 <h4>dates of stay</h4>
-                <CustomDatepicker date={startDate} setDate={setStartDate} />
+                <DatePicker
+                  selected={startDate}
+                  placeholderText="DD.MM.YYYY"
+                  dateFormat="dd.MM.yyyy"
+                  onChange={(date) => setStartDate(date)}
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={new Date()}
+                />
               </Form.Group>
 
               <Form.Group controlId="controlSelectCountGuests">

@@ -22,9 +22,12 @@ export default function FormSearchRoom() {
                 </Form.Label>
                 <DatePicker
                   selected={startDate}
+                  placeholderText="DD.MM.YYYY"
+                  dateFormat="dd.MM.yyyy"
                   onChange={(date) => setStartDate(date)}
                   startDate={startDate}
                   endDate={endDate}
+                  minDate={new Date()}
                 />
               </Form.Group>
             </Col>
@@ -35,9 +38,12 @@ export default function FormSearchRoom() {
                 </Form.Label>
                 <DatePicker
                   selected={endDate}
+                  placeholderText="DD.MM.YYYY"
+                  dateFormat="dd.MM.yyyy"
                   onChange={(date) => setEndDate(date)}
                   startDate={startDate}
                   endDate={endDate}
+                  minDate={Math.max(new Date(), startDate)}
                 />
               </Form.Group>
             </Col>
