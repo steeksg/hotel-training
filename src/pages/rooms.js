@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Container, Row, Col, CardColumns, Form } from "react-bootstrap";
+import { Container, Row, Col, CardColumns, Form, Pagination } from "react-bootstrap";
 import CardRoom from "../components/cardRoom/cardRoom";
-// import CustomDatepicker from "../components/customDatepicker/customDatepicker";
 import DatePicker from "react-datepicker";
 import CustomRange from "../components/customRange/customRange";
 import SelectGuests from "../components/selectGuests/selectGuests";
@@ -162,6 +161,23 @@ export default function RoomsPage() {
                     );
                   })}
                 </CardColumns>
+                <Pagination>
+                  <Pagination.First />
+                  <Pagination.Prev />
+                  <Pagination.Item href="/room">{1}</Pagination.Item>
+                  <Pagination.Ellipsis />
+
+                  <Pagination.Item>{10}</Pagination.Item>
+                  <Pagination.Item>{11}</Pagination.Item>
+                  <Pagination.Item active>{12}</Pagination.Item>
+                  <Pagination.Item>{13}</Pagination.Item>
+                  <Pagination.Item disabled>{14}</Pagination.Item>
+
+                  <Pagination.Ellipsis />
+                  <Pagination.Item>{20}</Pagination.Item>
+                  <Pagination.Next />
+                  <Pagination.Last />
+                </Pagination>
               </Col>
             </Row>
           </Col>

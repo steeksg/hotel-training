@@ -6,8 +6,8 @@ import SelectGuests from "../selectGuests/selectGuests";
 import "./formSearchRoom.scss";
 
 export default function FormSearchRoom() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   return (
     <>
