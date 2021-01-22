@@ -31,6 +31,8 @@ body {
   font-weight: normal;
   font-size: 14px;
   color: rgba(31, 32, 65, 0.75);
+
+  line-height: 24px;
 }
 
 button {
@@ -94,8 +96,31 @@ h4 {
   height: 1rem;
 }
 
-.containerRoomCollage {
-  // height: 50vh;
+.roomRuleList {
+  list-style-type: none;
+  padding: {
+    left: 0;
+  }
+
+  @media (max-width: 576px) {
+    padding: {
+      left: 15px;
+    }
+  }
+
+  &--item {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 7px;
+      border-radius: 50%;
+      height: 10px;
+      width: 10px;
+      background-color: rgba(31, 32, 65, 0.25);
+    }
+  }
 }
 
 @import "./components/customDatepicker/customDatepicker.scss";

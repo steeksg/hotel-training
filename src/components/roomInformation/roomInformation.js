@@ -28,7 +28,7 @@ export default function RoomInformation(props) {
 
   const ItemIcon = (props) => {
     const { path } = props;
-    return <Icon path={path} size={1.7} color="#BC9CFF" />;
+    return <Icon path={path} size={2} color="#BC9CFF" />;
   };
 
   const Item = (props) => {
@@ -36,12 +36,12 @@ export default function RoomInformation(props) {
     return (
       <>
         <Row className="my-3">
-          <Col className="col-2">
+          <Col className="col-3 col-sm-2 mr-sm-3">
             <div className="roomInformation--icon">
               <ItemIcon path={icon} />
             </div>
           </Col>
-          <Col className="col-10">
+          <Col>
             <Row>
               <span className="roomInformation--title">{title}</span>
             </Row>
@@ -58,17 +58,16 @@ export default function RoomInformation(props) {
     <>
       {items.map((item, index, arr) => {
         return (
-          <>
+          <div key={index}>
             <Item
               icon={types[item].icon}
               title={types[item].title}
               text={types[item].text}
             />
-            {console.log(index + " " + arr.length)}
             {index + 1 < arr.length && (
               <div className="roomInformation--divider" />
             )}
-          </>
+          </div>
         );
       })}
     </>

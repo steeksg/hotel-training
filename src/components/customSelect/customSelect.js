@@ -80,7 +80,7 @@ export default function CustomSelect(props) {
 
   const clearAll = () => {
     data.map((item) => {
-      item.setCount(0);
+      return item.setCount(0);
     });
   };
 
