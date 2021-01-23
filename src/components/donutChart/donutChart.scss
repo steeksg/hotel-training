@@ -1,0 +1,19 @@
+.donutChart {
+  &--unit {
+    stroke-width: 10;
+    fill: none;
+  }
+
+  &--great {
+      stroke: #86cfa3;
+}
+&--good {
+    stroke: #a2c6e0;
+}
+&--acceptable {
+    stroke: #ffc7ec;
+}
+  &--bad {
+    stroke: #a32479;
+  }
+}

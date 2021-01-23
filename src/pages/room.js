@@ -4,6 +4,7 @@ import RoomCollage from "../components/roomCollage/roomCollage";
 import FormReservedRoom from "../components/formReservedRoom/formReservedRoom";
 import RoomInformation from "../components/roomInformation/roomInformation";
 import CardReview from "../components/cardReview/cardReview";
+import DonutChart from "../components/donutChart/donutChart";
 
 import Avatar_1 from "../img/user_1.png";
 import Avatar_2 from "../img/user_2.png";
@@ -58,6 +59,7 @@ export default function RoomPage() {
               </Col>
               <Col className="col-12 col-md-6">
                 <h3> Impressions of the rooms </h3>
+                <DonutChart />
               </Col>
             </Row>
             <Row className="mb-3">
