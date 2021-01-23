@@ -1,13 +1,27 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import RoomCollage from "../components/RoomCollage/roomCollage";
-import FormSearchRoom from "../components/formSearchRoom/formSearchRoom";
+import RoomCollage from "../components/roomCollage/roomCollage";
+import FormReservedRoom from "../components/formReservedRoom/formReservedRoom";
 import RoomInformation from "../components/roomInformation/roomInformation";
 import CardReview from "../components/cardReview/cardReview";
 
 import Avatar_1 from "../img/user_1.png";
 import Avatar_2 from "../img/user_2.png";
 
+var Jan25_2021 = new Date(2021, 0, 25);
+var Jan28_2021 = new Date(2021, 0, 28);
+
+const roomReservedData = {
+  number: 1,
+  price: {
+    byDay: 9900,
+    service: 2485,
+    discountService: 2485,
+    additionalService: 300,
+  },
+  dates: { start: Jan25_2021, end: Jan28_2021 },
+  guests: { adult: 2, children: 1, babies: 1 },
+};
 const dataExample = ["comfort", "convenience", "cosiness"];
 const reviewsExample = [
   {
@@ -85,8 +99,13 @@ export default function RoomPage() {
               </Col>
             </Row>
           </Col>
-          <Col className="col-12 col-lg-3 d-flex justify-content-center">
-            <FormSearchRoom />
+          <Col className="col-12 col-lg-3 d-flex align-items-start justify-content-center">
+            <FormReservedRoom
+              number={roomReservedData.number}
+              dates={roomReservedData.dates}
+              guests={roomReservedData.guests}
+              price={roomReservedData.price}
+            />
           </Col>
         </Row>
       </Container>

@@ -85,11 +85,9 @@ export default function CustomSelect(props) {
   };
 
   return (
-    <div>
+    <div className="position-relative">
       <div
-        className={`form-control customSelect position-relative ${
-          show && "customSelect-expand"
-        }`}
+        className={`form-control customSelect ${show && "customSelect-expand"}`}
         onClick={() => {
           setShow(!show);
         }}
