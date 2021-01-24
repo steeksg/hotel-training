@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 
 import "./donutChart.scss";
@@ -6,6 +7,17 @@ import "./donutChart.scss";
 export default function DonutChart(props) {
   const example = { great: 50, good: 25, acceptable: 25, bad: 0 };
   const { great, good, acceptable, bad } = example;
+
+  const sum = great + good + acceptable + bad;
+  const percent = sum / 100;
+
+  const calculatePercent = (value) => {
+    return value / percent;
+  };
+
+  const percents = { great: 0, good: 0, acceptable: 0, bad: 0 };
+
+  useEffect(() => {});
 
   //TODO: Create calculate logic and get props
 
