@@ -1,19 +1,79 @@
 .donutChart {
+  &--donut {
+    position: relative;
+    width: 150px;
+    height: 150px;
+  }
+
+  &--title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #bc9cff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+
+    &Count {
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+
   &--unit {
-    stroke-width: 10;
+    stroke-width: 1;
     fill: none;
   }
 
-  &--great {
-      stroke: #86cfa3;
-}
-&--good {
-    stroke: #a2c6e0;
-}
-&--acceptable {
-    stroke: #ffc7ec;
-}
-  &--bad {
-    stroke: #a32479;
+  &--legend {
+    list-style-type: none;
+    padding: {
+      left: 0;
+    }
+
+    &Item {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 7px;
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+      }
+      &-great {
+        &::before {
+          background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
+        }
+      }
+      &-good {
+        &::before {
+          background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+        }
+      }
+      &-acceptable {
+        &::before {
+          background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        }
+      }
+      &-bad {
+        &::before {
+          background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
+        }
+      }
+    }
   }
 }
