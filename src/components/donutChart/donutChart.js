@@ -5,8 +5,8 @@ import { Row, Col } from "react-bootstrap";
 import "./donutChart.scss";
 
 export default function DonutChart(props) {
-  const example = { great: 50, good: 25, acceptable: 25, bad: 0 };
-  const { great, good, acceptable, bad } = example;
+  // const example = { great: 20, good: 25, acceptable: 25, bad: 0 };
+  const { great, good, acceptable, bad } = props.data;
 
   const sum = great + good + acceptable + bad;
   const percent = sum / 100;
@@ -15,9 +15,12 @@ export default function DonutChart(props) {
     return value / percent;
   };
 
-  const percents = { great: 0, good: 0, acceptable: 0, bad: 0 };
-
-  useEffect(() => {});
+  const percents = {
+    great: calculatePercent(great),
+    good: calculatePercent(good),
+    acceptable: calculatePercent(acceptable),
+    bad: calculatePercent(bad),
+  };
 
   //TODO: Create calculate logic and get props
 
@@ -55,7 +58,7 @@ export default function DonutChart(props) {
           </defs>
           <g>
             <circle
-              style={{ strokeDasharray: `${great} 100` }}
+              style={{ strokeDasharray: `${percents.great} 100` }}
               className="donutChart--unit donutChart--great"
               r="15.9"
               cx="50%"
@@ -64,8 +67,8 @@ export default function DonutChart(props) {
             ></circle>
             <circle
               style={{
-                strokeDasharray: `${good} 100`,
-                strokeDashoffset: `${0 - great}`,
+                strokeDasharray: `${percents.good} 100`,
+                strokeDashoffset: `${0 - percents.great}`,
               }}
               className="donutChart--unit donutChart--good"
               r="15.9"
@@ -75,8 +78,8 @@ export default function DonutChart(props) {
             ></circle>
             <circle
               style={{
-                strokeDasharray: `${acceptable} 100`,
-                strokeDashoffset: `${0 - great - good}`,
+                strokeDasharray: `${percents.acceptable} 100`,
+                strokeDashoffset: `${0 - percents.great - percents.good}`,
               }}
               className="donutChart--unit donutChart--acceptable"
               r="15.9"
@@ -86,8 +89,10 @@ export default function DonutChart(props) {
             ></circle>
             <circle
               style={{
-                strokeDasharray: `${bad} 100`,
-                strokeDashoffset: `${25 - great - good - acceptable}`,
+                strokeDasharray: `${percents.bad} 100`,
+                strokeDashoffset: `${
+                  0 - percents.great - percents.good - percents.acceptable
+                }`,
               }}
               className="donutChart--unit donutChart--bad"
               r="15.9"
@@ -125,7 +130,7 @@ export default function DonutChart(props) {
       <Col className="">
         <div className="donutChart--donut">
           <div className="donutChart--title">
-            <span className="donutChart--titleCount">260</span>
+            <span className="donutChart--titleCount">{sum}</span>
             <div>votes</div>
           </div>
           <SVGDonut />

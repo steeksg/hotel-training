@@ -25,7 +25,6 @@ export default function MainPage() {
   return (
     <Styles>
       <Jumbotron fluid className="jumbo">
-        {/* <div className="overlay"></div> */}
         <Container className="d-flex flex-column justify-content-between jumboContainer">
           <div className="align-self-start">
             <FormSearchRoom />

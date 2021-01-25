@@ -25,6 +25,11 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,%3csvg xmlns='h
 
 @import "~bootstrap/scss/bootstrap";
 
+body.modal-open {
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
 body {
   font-family: Montserrat;
   font-style: normal;

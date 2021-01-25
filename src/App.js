@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import "./App.scss";
 import Navibar from "./components/navibar/navibar";
+
+import { currentRoomData } from "./simulationAPI";
 
 import MainPage from "./pages/main";
 import AboutPage from "./pages/about";
@@ -23,6 +27,8 @@ import RoomPage from "./pages/room";
 import Footer from "./components/footer/footer";
 
 export default function App() {
+  const [currentRoom, setCurrentRoom] = useState({});
+
   return (
     <>
       <Navibar />
@@ -43,7 +49,9 @@ export default function App() {
           <Route path="/contacts" component={ContactsPage} />
           <Route path="/communities" component={CommunitiesPage} />
           <Route path="/rooms" component={RoomsPage} />
-          <Route path="/room" component={RoomPage} />
+          <Route path="/room" component={RoomPage}>
+            <RoomPage room={currentRoomData} />
+          </Route>
         </Switch>
       </Router>
       <Footer />

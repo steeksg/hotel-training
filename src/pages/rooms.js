@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Container, Row, Col, CardColumns, Form, Pagination } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  CardColumns,
+  Form,
+  Pagination,
+} from "react-bootstrap";
 import CardRoom from "../components/cardRoom/cardRoom";
 import DatePicker from "react-datepicker";
 import CustomRange from "../components/customRange/customRange";
@@ -30,6 +37,20 @@ export default function RoomsPage() {
 
   const [minPrice, setMinPrice] = useState(minRange);
   const [maxPrice, setMaxPrice] = useState(maxRange);
+
+  const [pageInfo, setPageInfo] = useState({
+    currentPage: 1,
+    perPage: 3,
+    rooms: testData,
+  });
+  // const [rooms, setRooms] = useState(testData)
+
+  const startIndex = (pageInfo.currentPage - 1) * pageInfo.perPage;
+  const rooms = pageInfo.rooms.slice(startIndex, startIndex + pageInfo.perPage);
+
+  const changePage = (pageNumber) => {
+    setPageInfo({ ...pageInfo, currentPage: pageNumber });
+  };
 
   return (
     <>
@@ -149,7 +170,7 @@ export default function RoomsPage() {
             <Row>
               <Col>
                 <CardColumns className="d-flex flex-wrap justify-content-center">
-                  {testData.map((room) => {
+                  {rooms.map((room) => {
                     return (
                       <CardRoom
                         key={room.number}
@@ -162,8 +183,16 @@ export default function RoomsPage() {
                   })}
                 </CardColumns>
                 <Pagination>
-                  <Pagination.First />
-                  <Pagination.Prev />
+                  <Pagination.First
+                    onClick={() => {
+                      changePage(1);
+                    }}
+                  />
+                  <Pagination.Prev
+                    onClick={() => {
+                      changePage(pageInfo.currentPage - 1);
+                    }}
+                  />
                   <Pagination.Item href="/room">{1}</Pagination.Item>
                   <Pagination.Ellipsis />
 
@@ -171,12 +200,20 @@ export default function RoomsPage() {
                   <Pagination.Item>{11}</Pagination.Item>
                   <Pagination.Item active>{12}</Pagination.Item>
                   <Pagination.Item>{13}</Pagination.Item>
-                  <Pagination.Item disabled>{14}</Pagination.Item>
+                  <Pagination.Item>{14}</Pagination.Item>
 
                   <Pagination.Ellipsis />
                   <Pagination.Item>{20}</Pagination.Item>
-                  <Pagination.Next />
-                  <Pagination.Last />
+                  <Pagination.Next
+                    onClick={() => {
+                      changePage(pageInfo.currentPage + 1);
+                    }}
+                  />
+                  <Pagination.Last
+                    onClick={() => {
+                      changePage(pageInfo.rooms.length / pageInfo.perPage);
+                    }}
+                  />
                 </Pagination>
               </Col>
             </Row>

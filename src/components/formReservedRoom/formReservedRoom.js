@@ -27,7 +27,7 @@ export default function FormReservedRoom(props) {
   };
 
   return (
-    <Form className="formReservedRoom px-2 pt-4 pb-3">
+    <Form className="formReservedRoom px-2 pt-5 pb-4">
       <Container>
         <Row className="formReservedRoom--rowHeader mb-3">
           <Col className="col-4 formReservedRoom--number">
