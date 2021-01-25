@@ -11,7 +11,8 @@ export default function RoomCollage() {
   return (
     <>
       <Row className="no-gutters">
-        <Col className="col-xl-4 col-sm-8 col-12">
+        {/* <Col className="col-xl-4 col-sm-8 col-12"> */}
+        <Col className="col-sm-8 col-12">
           <div
             className="roomCollage--imgContainer large"
             style={{
@@ -19,9 +20,11 @@ export default function RoomCollage() {
             }}
           ></div>
         </Col>
-        <Col className="col-xl-8 col-sm-4 col-12">
+        <Col className="col-sm-4 col-12">
+        {/* <Col className="col-xl-8 col-sm-4 col-12"> */}
           <Row className="no-gutters">
-            <Col className="col-xl-6 col-lg-12 col-12">
+            <Col className="col-lg-12 col-12">
+            {/* <Col className="col-xl-6 col-lg-12 col-12"> */}
               <div
                 className="roomCollage--imgContainer small"
                 style={{
@@ -29,7 +32,8 @@ export default function RoomCollage() {
                 }}
               ></div>
             </Col>
-            <Col className="col-xl-6 col-lg-12 col-12">
+            <Col className="col-lg-12 col-12">
+            {/* <Col className="col-xl-6 col-lg-12 col-12"> */}
               <div
                 className="roomCollage--imgContainer small"
                 style={{

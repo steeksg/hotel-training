@@ -7,7 +7,8 @@ import SelectGuests from "../selectGuests/selectGuests";
 import "./formReservedRoom.scss";
 
 export default function FormReservedRoom(props) {
-  const { number, price, dates, guests } = props;
+  const { number, price, dates } = props;
+  // const { guests } = props;
 
   const getDays = () => {
     const msDay = 60 * 60 * 24 * 1000;

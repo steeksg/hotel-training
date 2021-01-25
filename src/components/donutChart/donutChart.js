@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 
 import "./donutChart.scss";

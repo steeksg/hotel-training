@@ -79,9 +79,7 @@ export default function CustomSelect(props) {
   };
 
   const clearAll = () => {
-    data.map((item) => {
-      return item.setCount(0);
-    });
+    data.map((item) => item.setCount(0));
   };
 
   return (

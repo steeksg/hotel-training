@@ -1,0 +1,31 @@
+.pagination {
+  .page-link {
+    border-radius: 50% !important;
+    border: none;
+    height: 40px;
+    width: 40px;
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 24px;
+
+    &.active {
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+    }
+  }
+}
+
+.page-item {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.paginator {
+  &--prev,
+  &--next {
+    .page-link {
+      background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+      color: white
+    }
+  }
+}

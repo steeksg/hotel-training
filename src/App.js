@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
@@ -27,7 +27,7 @@ import RoomPage from "./pages/room";
 import Footer from "./components/footer/footer";
 
 export default function App() {
-  const [currentRoom, setCurrentRoom] = useState({});
+  // const [currentRoom, setCurrentRoom] = useState({});
 
   return (
     <>
