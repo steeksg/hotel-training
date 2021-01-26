@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Row, Col, Carousel } from "react-bootstrap";
 import Ratings from "react-ratings-declarative";
+import { NavLink } from "react-router-dom";
 
 import imgRoom from "./img.png";
 import "./cardRoom.scss";
@@ -17,7 +18,6 @@ export default function CardRoom(props) {
   return (
     <>
       <Card className="cardRoom">
-        {/* <Card.Img variant="top" src={imgRoom} /> */}
         <Carousel interval={null}>
           <Carousel.Item>
             <img className="d-block w-100" src={imgRoom} alt="First slide" />
@@ -29,8 +29,8 @@ export default function CardRoom(props) {
             <img className="d-block w-100" src={imgRoom} alt="Third slide" />
           </Carousel.Item>
         </Carousel>
-        <Card.Body>
-          <Row>
+        <Card.Body >
+          <Row  as={NavLink} to="/room" className="cardRoom--link">
             <Col>
               <h4 className="cardRoom--number align-middle">{`№${number}`}</h4>
             </Col>
@@ -42,7 +42,7 @@ export default function CardRoom(props) {
             </Col>
           </Row>
           <div className="cardRoom--divider"></div>
-          <Row>
+          <Row as={NavLink} to="/room" className="cardRoom--link">
             <Col className="col-7 d-flex align-content-center pr-0">
               <Ratings
                 rating={rating}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
+import { NavLink } from "react-router-dom";
+
 import SelectGuests from "../selectGuests/selectGuests";
 import "./formSearchRoom.scss";
 
@@ -63,7 +65,8 @@ export default function FormSearchRoom() {
           <Row className="mt-3">
             <Col>
               <Button
-                href="/rooms"
+                as={NavLink}
+                to="/rooms"
                 variant="primary"
                 type="submit"
                 className="w-100"

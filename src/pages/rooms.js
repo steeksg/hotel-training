@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  CardColumns,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Col, CardColumns, Form } from "react-bootstrap";
+import { NavLink, useHistory } from "react-router-dom";
+
 import CardRoom from "../components/cardRoom/cardRoom";
 import DatePicker from "react-datepicker";
 import CustomRange from "../components/customRange/customRange";
@@ -14,7 +9,7 @@ import SelectGuests from "../components/selectGuests/selectGuests";
 import SelectComfort from "../components/selectComfort/selectComfort";
 import Paginator from "../components/paginator/paginator";
 
-export default function RoomsPage(props) {
+function RoomsPage(props) {
   const { currentRoom, setCurrentRoom, allRooms } = props;
 
   const [startDate, setStartDate] = useState(null);
@@ -35,14 +30,15 @@ export default function RoomsPage(props) {
   const startIndex = (pageInfo.currentPage - 1) * pageInfo.perPage;
   const rooms = pageInfo.rooms.slice(startIndex, startIndex + pageInfo.perPage);
 
+  let history = useHistory();
+
+  const goToRoom = () => {
+    history.push("/room");
+  };
+
   return (
     <>
       <Container>
-        <Button
-          onClick={() => {
-            console.log(currentRoom);
-          }}
-        />
         <Row>
           <Col className="col-12 col-md-3 col pt-3">
             <Form>
@@ -161,11 +157,12 @@ export default function RoomsPage(props) {
                   {rooms.map((room) => {
                     return (
                       <div
+                        // as={NavLink}
+                        // to="/room"
                         key={room.number}
                         onClick={() => {
                           setCurrentRoom(room.number);
-                          console.log(room.number);
-                          // document.location = "/room";
+                          goToRoom();
                         }}
                       >
                         <CardRoom
@@ -196,3 +193,4 @@ export default function RoomsPage(props) {
     </>
   );
 }
+export default RoomsPage;

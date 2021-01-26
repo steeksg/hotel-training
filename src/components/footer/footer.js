@@ -7,6 +7,7 @@ import {
   faInstagram,
   faFacebookSquare,
 } from "@fortawesome/free-brands-svg-icons";
+import { NavLink } from "react-router-dom";
 
 import "./footer.scss";
 
@@ -18,7 +19,7 @@ export default function Footer() {
           <Row>
             <Col className="col-12 col-md-3">
               <Nav>
-                <Nav.Link href="/" className="mb-3 p-0">
+                <Nav.Link as={NavLink} to="/" className="mb-3 p-0">
                   <LogoApp />
                 </Nav.Link>
               </Nav>
@@ -35,25 +36,29 @@ export default function Footer() {
 
               <Nav>
                 <Nav.Link
-                  href="/about"
+                  as={NavLink}
+                  to="/about"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   About Us
                 </Nav.Link>
                 <Nav.Link
-                  href="/news"
+                  as={NavLink}
+                  to="/news"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   News
                 </Nav.Link>
                 <Nav.Link
-                  href="/support"
+                  as={NavLink}
+                  to="/support"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Support
                 </Nav.Link>
                 <Nav.Link
-                  href="/roomServices"
+                  as={NavLink}
+                  to="/roomServices"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Services
@@ -67,25 +72,29 @@ export default function Footer() {
 
               <Nav>
                 <Nav.Link
-                  href="/about"
+                  as={NavLink}
+                  to="/about"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   About services
                 </Nav.Link>
                 <Nav.Link
-                  href="/team"
+                  as={NavLink}
+                  to="/team"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Our team
                 </Nav.Link>
                 <Nav.Link
-                  href="/vacancy"
+                  as={NavLink}
+                  to="/vacancy"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Vacancy
                 </Nav.Link>
                 <Nav.Link
-                  href="/investors"
+                  as={NavLink}
+                  to="/investors"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Investors
@@ -99,19 +108,22 @@ export default function Footer() {
               </div>
               <Nav>
                 <Nav.Link
-                  href="/docs"
+                  as={NavLink}
+                  to="/docs"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Docs
                 </Nav.Link>
                 <Nav.Link
-                  href="/communities"
+                  as={NavLink}
+                  to="/communities"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Communities
                 </Nav.Link>
                 <Nav.Link
-                  href="/contacts"
+                  as={NavLink}
+                  to="/contacts"
                   className="mb-3 p-0 w-100 footer--navLink"
                 >
                   Contacts

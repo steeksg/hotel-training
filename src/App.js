@@ -1,6 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 
 import "./App.scss";
 import Navibar from "./components/navibar/navibar";
@@ -26,24 +31,20 @@ import RoomsPage from "./pages/rooms";
 import RoomPage from "./pages/room";
 
 import Footer from "./components/footer/footer";
-import { Button } from "react-bootstrap";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
-  // const [rooms, setRooms] = useState(testData);
-  // const [isLoad, setIsLoad] = useState(false);
-  const [currentRoom, setCurrentRoom] = useState(1);
-
-  // const currentRoom = useRef(1);
-  // const setCurrentRoom = (index) => {
-  //   currentRoom.current = index;
-  // };
-
-  // useEffect(() => {
-  //   if (!isLoad) {
-  //     setRooms(testData);
-  //     setIsLoad(true);
-  //   }
-  // });
+  const [rooms, setRooms] = useState(testData);
+  const [currentRoom, setCurrentRoom] = useState(null);
 
   const handleChangeCurrentRoom = (number) => {
     setCurrentRoom(number);
@@ -51,8 +52,9 @@ export default function App() {
 
   return (
     <>
-      <Navibar />
       <Router>
+        <ScrollToTop />
+        <Navibar />
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/about" component={AboutPage} />
@@ -71,21 +73,18 @@ export default function App() {
           <Route path="/rooms">
             <RoomsPage
               setCurrentRoom={handleChangeCurrentRoom}
-              allRooms={testData}
+              allRooms={rooms}
               currentRoom={currentRoom}
             />
           </Route>
           <Route path="/room">
-            {/* {console.log(testData.find((item) => item.number === currentRoom))} */}
             <RoomPage
-              room={testData.find((item) => item.number === currentRoom)}
-              // room={rooms[0]}
+              room={rooms.find((item) => item.number === currentRoom)}
             />
           </Route>
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
-      <Button onClick={() => console.log(currentRoom)} />
     </>
   );
 }

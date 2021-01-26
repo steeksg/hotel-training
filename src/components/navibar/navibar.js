@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
 import LogoApp from "../logo/logo";
+import { NavLink } from "react-router-dom";
 
 import { ModalLogIn, ModalSignUp } from "./modals";
 
@@ -27,7 +28,7 @@ export default function Navibar() {
     <>
       <Navbar bg="light" variant="light" collapseOnSelect expand="md">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand as={NavLink} to="/">
             <LogoApp />
           </Navbar.Brand>
 
@@ -35,22 +36,30 @@ export default function Navibar() {
 
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto align-items-md-center">
-              <Nav.Link href="/about">About</Nav.Link>
+              <Nav.Link as={NavLink} to="/about">
+                About
+              </Nav.Link>
               <NavDropdown title="Services" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/roomServices">
+                <NavDropdown.Item as={NavLink} to="/roomServices">
                   Room services
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/restaurant">
-                  Restaurant
-                </NavDropdown.Item>
+                <NavDropdown.Item to="/restaurant">Restaurant</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/vacancy">Vacancy</Nav.Link>
-              <Nav.Link href="/news">News</Nav.Link>
+              <Nav.Link as={NavLink} to="/vacancy">
+                Vacancy
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/news">
+                News
+              </Nav.Link>
               <NavDropdown title="Docs" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/licenses">Licenses</NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/licenses">
+                  Licenses
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/contract">Contract</NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/contract">
+                  Contract
+                </NavDropdown.Item>
               </NavDropdown>
               <Button variant="outline-primary m-2" onClick={handleClickLogIn}>
                 LOG IN
@@ -62,8 +71,16 @@ export default function Navibar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <ModalLogIn showLogIn={showLogIn} setShowSignUp={handleClickSignUp} handleClose={handleCloseLogIn} />
-      <ModalSignUp showSignUp={showSignUp} setShowLogIn={handleClickLogIn}  handleClose={handleCloseSignUp} />
+      <ModalLogIn
+        showLogIn={showLogIn}
+        setShowSignUp={handleClickSignUp}
+        handleClose={handleCloseLogIn}
+      />
+      <ModalSignUp
+        showSignUp={showSignUp}
+        setShowLogIn={handleClickLogIn}
+        handleClose={handleCloseSignUp}
+      />
     </>
   );
 }
