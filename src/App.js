@@ -10,7 +10,6 @@ import {
 import "./App.scss";
 import Navibar from "./components/navibar/navibar";
 
-// import { currentRoomData } from "./simulationAPI";
 import { testData } from "./simulationAPI";
 
 import MainPage from "./pages/main";

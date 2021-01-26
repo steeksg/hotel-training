@@ -157,8 +157,6 @@ function RoomsPage(props) {
                   {rooms.map((room) => {
                     return (
                       <div
-                        // as={NavLink}
-                        // to="/room"
                         key={room.number}
                         onClick={() => {
                           setCurrentRoom(room.number);
