@@ -1,11 +1,12 @@
-// import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import "./App.scss";
 import Navibar from "./components/navibar/navibar";
 
-import { currentRoomData } from "./simulationAPI";
+// import { currentRoomData } from "./simulationAPI";
+import { testData } from "./simulationAPI";
 
 import MainPage from "./pages/main";
 import AboutPage from "./pages/about";
@@ -25,9 +26,28 @@ import RoomsPage from "./pages/rooms";
 import RoomPage from "./pages/room";
 
 import Footer from "./components/footer/footer";
+import { Button } from "react-bootstrap";
 
 export default function App() {
-  // const [currentRoom, setCurrentRoom] = useState({});
+  // const [rooms, setRooms] = useState(testData);
+  // const [isLoad, setIsLoad] = useState(false);
+  const [currentRoom, setCurrentRoom] = useState(1);
+
+  // const currentRoom = useRef(1);
+  // const setCurrentRoom = (index) => {
+  //   currentRoom.current = index;
+  // };
+
+  // useEffect(() => {
+  //   if (!isLoad) {
+  //     setRooms(testData);
+  //     setIsLoad(true);
+  //   }
+  // });
+
+  const handleChangeCurrentRoom = (number) => {
+    setCurrentRoom(number);
+  };
 
   return (
     <>
@@ -48,13 +68,24 @@ export default function App() {
           <Route path="/docs" component={DocsPage} />
           <Route path="/contacts" component={ContactsPage} />
           <Route path="/communities" component={CommunitiesPage} />
-          <Route path="/rooms" component={RoomsPage} />
-          <Route path="/room" component={RoomPage}>
-            <RoomPage room={currentRoomData} />
+          <Route path="/rooms">
+            <RoomsPage
+              setCurrentRoom={handleChangeCurrentRoom}
+              allRooms={testData}
+              currentRoom={currentRoom}
+            />
+          </Route>
+          <Route path="/room">
+            {/* {console.log(testData.find((item) => item.number === currentRoom))} */}
+            <RoomPage
+              room={testData.find((item) => item.number === currentRoom)}
+              // room={rooms[0]}
+            />
           </Route>
         </Switch>
       </Router>
       <Footer />
+      <Button onClick={() => console.log(currentRoom)} />
     </>
   );
 }

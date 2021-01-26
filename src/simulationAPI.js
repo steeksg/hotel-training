@@ -20,6 +20,16 @@ const dataExample = ["comfort", "convenience", "cosiness"];
 
 const exampleDonut = { great: 132, good: 81, acceptable: 39, bad: 16 };
 
+// const exampleDonut = () => {
+//   const countReviews = getRandomInt(900);
+//   const great = getRandomInt(countReviews);
+//   const good = getRandomInt(countReviews - great);
+//   const acceptable = getRandomInt(countReviews - great - good);
+//   const bad = countReviews - great - good - acceptable;
+
+//   return { great, good, acceptable, bad };
+// };
+
 const reviewsExample = [
   {
     user: { name: "Murad Saraphanov", avatar: Avatar_1 },
@@ -45,3 +55,1174 @@ export const currentRoomData = {
   roomReservedData: roomReservedData,
   roomInformation: dataExample,
 };
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max + 1));
+}
+
+function createRandomData() {
+  let counters = [];
+  let data = [];
+
+  const countElements = getRandomInt(120);
+
+  for (let i = 0; i < countElements; i++) {
+    counters.push(i);
+  }
+
+  const setNumber = new Set(counters);
+
+  const isUniq = (index) => {
+    return setNumber.delete(index);
+  };
+
+  for (let i = 0; i < countElements; i++) {
+    let number;
+
+    do {
+      number = getRandomInt(countElements);
+    } while (isUniq());
+
+    data.push({
+      number: number,
+      price: getRandomInt(900),
+      rating: getRandomInt(5),
+      //TODO: Will make refactoring for universal solution
+      roomInformation: dataExample,
+      reviews: {
+        counts: exampleDonut(),
+        values: reviewsExample,
+      },
+      roomReservedData: roomReservedData,
+    });
+  }
+
+  return data;
+}
+
+// export const testData = createRandomData();
+
+export const testData = [
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 1,
+    price: 200,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 2,
+    price: 200,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 3,
+    price: 200,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 22,
+    price: 230,
+    rating: 1,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 23,
+    price: 300,
+    rating: 2,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 24,
+    price: 400,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 987,
+    price: 500,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 214,
+    price: 1,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 67,
+    price: 2,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 6,
+    price: 3,
+    rating: 4,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 7,
+    price: 4,
+    rating: 3,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+  {
+    number: 77,
+    price: 5,
+    rating: 5,
+    roomInformation: dataExample,
+    reviews: {
+      counts: exampleDonut,
+      values: reviewsExample,
+    },
+    roomReservedData: roomReservedData,
+  },
+];

@@ -8,6 +8,12 @@ import "./cardRoom.scss";
 export default function CardRoom(props) {
   const { number, price, rating, reviews } = props;
 
+  const sumReviews =
+    reviews.counts.great +
+    reviews.counts.good +
+    reviews.counts.acceptable +
+    reviews.counts.bad;
+
   return (
     <>
       <Card className="cardRoom">
@@ -54,7 +60,7 @@ export default function CardRoom(props) {
             </Col>
             <Col className="ml-auto d-flex justify-content-end pl-0">
               <span className="cardRoom--reviews align-bottom">
-                {`${reviews} `}
+                {`${sumReviews} `}
                 <span className="cardRoom--textReviews align-middle">
                   reviews
                 </span>

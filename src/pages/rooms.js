@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Container, Row, Col, CardColumns, Form } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  CardColumns,
+  Form,
+  Button,
+} from "react-bootstrap";
 import CardRoom from "../components/cardRoom/cardRoom";
 import DatePicker from "react-datepicker";
 import CustomRange from "../components/customRange/customRange";
@@ -7,146 +14,9 @@ import SelectGuests from "../components/selectGuests/selectGuests";
 import SelectComfort from "../components/selectComfort/selectComfort";
 import Paginator from "../components/paginator/paginator";
 
-const testData = [
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 987, price: 500, rating: 4, reviews: 1 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-  { number: 1, price: 200, rating: 3, reviews: 1 },
-  { number: 2, price: 200, rating: 4, reviews: 45 },
-  { number: 3, price: 200, rating: 5, reviews: 167 },
-  { number: 22, price: 230, rating: 1, reviews: 2 },
-  { number: 23, price: 300, rating: 2, reviews: 4 },
-  { number: 24, price: 400, rating: 3, reviews: 167 },
-  { number: 214, price: 1, rating: 3, reviews: 2 },
-  { number: 67, price: 2, rating: 3, reviews: 4 },
-  { number: 6, price: 3, rating: 4, reviews: 4 },
-  { number: 7, price: 4, rating: 3, reviews: 3 },
-  { number: 77, price: 5, rating: 5, reviews: 4 },
-];
+export default function RoomsPage(props) {
+  const { currentRoom, setCurrentRoom, allRooms } = props;
 
-export default function RoomsPage() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -159,9 +29,8 @@ export default function RoomsPage() {
   const [pageInfo, setPageInfo] = useState({
     currentPage: 1,
     perPage: 6,
-    rooms: testData,
+    rooms: allRooms,
   });
-  // const [rooms, setRooms] = useState(testData)
 
   const startIndex = (pageInfo.currentPage - 1) * pageInfo.perPage;
   const rooms = pageInfo.rooms.slice(startIndex, startIndex + pageInfo.perPage);
@@ -169,6 +38,11 @@ export default function RoomsPage() {
   return (
     <>
       <Container>
+        <Button
+          onClick={() => {
+            console.log(currentRoom);
+          }}
+        />
         <Row>
           <Col className="col-12 col-md-3 col pt-3">
             <Form>
@@ -286,13 +160,21 @@ export default function RoomsPage() {
                 <CardColumns className="d-flex flex-wrap justify-content-center">
                   {rooms.map((room) => {
                     return (
-                      <CardRoom
+                      <div
                         key={room.number}
-                        number={room.number}
-                        price={room.price}
-                        rating={room.rating}
-                        reviews={room.reviews}
-                      />
+                        onClick={() => {
+                          setCurrentRoom(room.number);
+                          console.log(room.number);
+                          // document.location = "/room";
+                        }}
+                      >
+                        <CardRoom
+                          number={room.number}
+                          price={room.price}
+                          rating={room.rating}
+                          reviews={room.reviews}
+                        />
+                      </div>
                     );
                   })}
                 </CardColumns>

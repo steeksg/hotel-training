@@ -2,6 +2,13 @@
   .page-link {
     border-radius: 50% !important;
     border: none;
+
+    @media (max-width: 576px) {
+      height: 30px;
+      width: 30px;
+      line-height: 14px;
+    }
+
     height: 40px;
     width: 40px;
 
@@ -16,8 +23,8 @@
 }
 
 .page-item {
-    margin-left: 5px;
-    margin-right: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .paginator {
@@ -25,7 +32,19 @@
   &--next {
     .page-link {
       background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-      color: white
+      color: white;
+    }
+  }
+
+  &--spacer {
+    .page-link {
+      @media (max-width: 576px) {
+        padding: {
+          left: 1px;
+          right: 1px;
+        }
+        width: 10px;
+      }
     }
   }
 }

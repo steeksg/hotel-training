@@ -56,7 +56,7 @@ export default function Paginator(props) {
     } else {
       return (
         <>
-          <Pagination.Ellipsis />
+          <Pagination.Ellipsis className="paginator--spacer" />
 
           <Pagination.Item
             onClick={() => {
@@ -74,7 +74,7 @@ export default function Paginator(props) {
             {currentPage + 1}
           </Pagination.Item>
 
-          <Pagination.Ellipsis />
+          <Pagination.Ellipsis className="paginator--spacer" />
         </>
       );
     }

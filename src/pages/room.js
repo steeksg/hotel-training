@@ -7,6 +7,7 @@ import CardReview from "../components/cardReview/cardReview";
 import DonutChart from "../components/donutChart/donutChart";
 
 export default function RoomPage(props) {
+  console.log(props);
   const { roomInformation, reviews, roomReservedData } = props.room;
 
   return (
