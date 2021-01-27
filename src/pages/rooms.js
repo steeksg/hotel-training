@@ -1,25 +1,11 @@
 import React, { useState } from "react";
-import { Container, Row, Col, CardColumns, Form } from "react-bootstrap";
-import { NavLink, useHistory } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
-import CardRoom from "../components/cardRoom/cardRoom";
-import DatePicker from "react-datepicker";
-import CustomRange from "../components/customRange/customRange";
-import SelectGuests from "../components/selectGuests/selectGuests";
-import SelectComfort from "../components/selectComfort/selectComfort";
-import Paginator from "../components/paginator/paginator";
+import RoomsSidebar from "../components/roomsSidebar/roomsSidebar";
+import RoomsContent from "../components/roomsContent/roomsContent";
 
 function RoomsPage(props) {
-  const { currentRoom, setCurrentRoom, allRooms } = props;
-
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-
-  const [minRange, setMinRange] = useState(100);
-  const [maxRange, setMaxRange] = useState(1000);
-
-  const [minPrice, setMinPrice] = useState(minRange);
-  const [maxPrice, setMaxPrice] = useState(maxRange);
+  const { setCurrentRoom, allRooms, reserveData, handleChangeDate, handleChangeGuestsCount } = props;
 
   const [pageInfo, setPageInfo] = useState({
     currentPage: 1,
@@ -27,164 +13,49 @@ function RoomsPage(props) {
     rooms: allRooms,
   });
 
-  const startIndex = (pageInfo.currentPage - 1) * pageInfo.perPage;
-  const rooms = pageInfo.rooms.slice(startIndex, startIndex + pageInfo.perPage);
+  const [filters, setFilters] = useState({
+    price: { minRange: 100, maxRange: 1000, minPrice: 100, maxPrice: 1000 },
+  });
 
-  let history = useHistory();
-
-  const goToRoom = () => {
-    history.push("/room");
+  const setNewRangePrice = (newRange, type) => {
+    setFilters((prev) => ({
+      ...prev,
+      price: { ...prev.price, [type]: newRange },
+    }));
   };
+
+  const setMinRangePrice = (newRange) => {
+    setNewRangePrice(newRange, "minRange");
+  };
+
+  const setMaxRangePrice = (newRange) => {
+    setNewRangePrice(newRange, "maxRange");
+  };
+
+  const startIndex = Math.floor((pageInfo.currentPage - 1) * pageInfo.perPage);
+  const rooms = pageInfo.rooms.slice(startIndex, startIndex + pageInfo.perPage);
 
   return (
     <>
       <Container>
         <Row>
-          <Col className="col-12 col-md-3 col pt-3">
-            <Form>
-              <Form.Group controlId="controlDateOfStay">
-                <h4>dates of stay</h4>
-                <DatePicker
-                  selected={startDate}
-                  placeholderText="DD.MM.YYYY"
-                  dateFormat="dd.MM.yyyy"
-                  onChange={(date) => setStartDate(date)}
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={new Date()}
-                />
-              </Form.Group>
-
-              <Form.Group controlId="controlSelectCountGuests">
-                <Form.Label className="mb-0">
-                  <h4>guests</h4>
-                </Form.Label>
-                <SelectGuests />
-              </Form.Group>
-
-              <Form.Group controlId="controlRangePrice">
-                <Form.Label className="mb-0 d-flex justify-content-between mb-2">
-                  <h4>Range price</h4>
-                  {`${minPrice}$ - ${maxPrice}$`}
-                </Form.Label>
-                <CustomRange
-                  min={minRange}
-                  max={maxRange}
-                  valueLeft={minPrice}
-                  valueRight={maxPrice}
-                  setLeft={setMinPrice}
-                  setRight={setMaxPrice}
-                />
-                <Form.Label className="mb-0 d-flex justify-content-between mt-2">
-                  Price per night stay in the room.
-                </Form.Label>
-              </Form.Group>
-
-              <Form.Group controlId="controlRules">
-                <Form.Label className="mb-0 d-flex justify-content-between">
-                  <h4>Rules</h4>
-                </Form.Label>
-                <Form.Check
-                  custom
-                  type="checkbox"
-                  label="Can smoke"
-                  id="checkSmoke"
-                />
-                <Form.Check
-                  custom
-                  type="checkbox"
-                  label="With pets"
-                  id="checkPets"
-                />
-                <Form.Check
-                  custom
-                  type="checkbox"
-                  label="Guests (no more than ten people)"
-                  id="checkGuests"
-                />
-              </Form.Group>
-
-              <Form.Group controlId="controlAvailability">
-                <Form.Label className="mb-0 d-flex justify-content-between">
-                  <h4>Availability</h4>
-                </Form.Label>
-                <Row>
-                  <Col className="col-1">
-                    <Form.Check custom type="checkbox" id="checkCorridor" />
-                  </Col>
-                  <Col>
-                    <span className="font-weight-bold">Wide corridor</span>
-                  </Col>
-                </Row>
-
-                <Form.Label>
-                  The width of the corridors in the room is at least 91 cm.
-                </Form.Label>
-
-                <Row>
-                  <Col className="col-1">
-                    <Form.Check custom type="checkbox" id="checkHelper" />
-                  </Col>
-                  <Col>
-                    <span className="font-weight-bold">
-                      Helper for disabled
-                    </span>
-                  </Col>
-                </Row>
-
-                <Form.Label>
-                  The width of the corridors in the room is at least 91 cm.
-                </Form.Label>
-              </Form.Group>
-
-              <Form.Group controlId="controlSelectComfort">
-                <Form.Label className="mb-0">
-                  <h4>Comfort</h4>
-                </Form.Label>
-                <SelectComfort />
-              </Form.Group>
-            </Form>
+          <Col className="rooms--sideBar col-12 col-md-5 col-lg-3 col pt-3">
+            <RoomsSidebar
+              filters={filters}
+              setMinRangePrice={setMinRangePrice}
+              setMaxRangePrice={setMaxRangePrice}
+              reserveData={reserveData}
+              handleChangeGuestsCount={handleChangeGuestsCount}
+              handleChangeDate={handleChangeDate}
+            />
           </Col>
-          <Col className="col-12 col-md-9 col pt-3">
-            <Row>
-              <Col>
-                <h3>The numbers we have selected for you</h3>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <CardColumns className="d-flex flex-wrap justify-content-center">
-                  {rooms.map((room) => {
-                    return (
-                      <div
-                        key={room.number}
-                        onClick={() => {
-                          setCurrentRoom(room.number);
-                          goToRoom();
-                        }}
-                      >
-                        <CardRoom
-                          number={room.number}
-                          price={room.price}
-                          rating={room.rating}
-                          reviews={room.reviews}
-                        />
-                      </div>
-                    );
-                  })}
-                </CardColumns>
-                <div className="rooms--paginatorContainer d-flex justify-content-center">
-                  <Paginator
-                    currentPage={pageInfo.currentPage}
-                    perPage={pageInfo.perPage}
-                    changePage={(pageNumber) =>
-                      setPageInfo({ ...pageInfo, currentPage: pageNumber })
-                    }
-                    elementsLength={pageInfo.rooms.length}
-                  />
-                </div>
-              </Col>
-            </Row>
+          <Col className="rooms--content col-12 col-md-7 col-lg-9 col pt-3 px-sm-0">
+            <RoomsContent
+              rooms={rooms}
+              setCurrentRoom={setCurrentRoom}
+              pageInfo={pageInfo}
+              setPageInfo={setPageInfo}
+            />
           </Col>
         </Row>
       </Container>

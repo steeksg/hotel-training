@@ -6,7 +6,7 @@ import imgRoom from "./img.png";
 import "./cardRoom.scss";
 
 export default function CardRoom(props) {
-  const { number, price, rating, reviews } = props;
+  const { number, price, rating, reviews, handleClick } = props;
 
   const sumReviews =
     reviews.counts.great +
@@ -28,9 +28,9 @@ export default function CardRoom(props) {
             <img className="d-block w-100" src={imgRoom} alt="Third slide" />
           </Carousel.Item>
         </Carousel>
-        <Card.Body >
-          <Row className="cardRoom--link">
-            <Col>
+        <Card.Body className="cardRoom--link" onClick={handleClick}>
+          <Row>
+            <Col className="col-4">
               <h4 className="cardRoom--number align-middle">{`№${number}`}</h4>
             </Col>
             <Col className="ml-auto d-flex justify-content-end">
@@ -41,8 +41,8 @@ export default function CardRoom(props) {
             </Col>
           </Row>
           <div className="cardRoom--divider"></div>
-          <Row className="cardRoom--link">
-            <Col className="col-7 d-flex align-content-center pr-0">
+          <Row >
+            <Col className="pl-2 col-6 d-flex align-content-center pr-0">
               <Ratings
                 rating={rating}
                 widgetDimensions="24px"

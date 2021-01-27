@@ -7,12 +7,17 @@ import SelectGuests from "../selectGuests/selectGuests";
 import "./formReservedRoom.scss";
 
 export default function FormReservedRoom(props) {
-  const { number, price, dates } = props;
-  // const { guests } = props;
+  const {
+    number,
+    price,
+    reserveData,
+    handleChangeDate,
+    handleChangeGuestsCount,
+  } = props;
 
   const getDays = () => {
     const msDay = 60 * 60 * 24 * 1000;
-    return (dates.end - dates.start) / msDay;
+    return (reserveData.dates.end - reserveData.dates.start) / msDay;
   };
 
   const getPriceByDay = () => {
@@ -46,12 +51,13 @@ export default function FormReservedRoom(props) {
                 <h4>ARRIVE</h4>
               </Form.Label>
               <DatePicker
-                selected={dates.start}
+                selectsStart
+                selected={reserveData.dates.start}
                 placeholderText="DD.MM.YYYY"
                 dateFormat="dd.MM.yyyy"
-                // onChange={(date) => setStartDate(date)}
-                startDate={dates.start}
-                endDate={dates.end}
+                onChange={(date) => handleChangeDate(date, "start")}
+                startDate={reserveData.dates.start}
+                endDate={reserveData.dates.end}
                 minDate={new Date()}
               />
             </Form.Group>
@@ -62,13 +68,14 @@ export default function FormReservedRoom(props) {
                 <h4>DEPARTURE</h4>
               </Form.Label>
               <DatePicker
-                selected={dates.end}
+                selectsEnd
+                selected={reserveData.dates.end}
                 placeholderText="DD.MM.YYYY"
                 dateFormat="dd.MM.yyyy"
-                // onChange={(date) => setEndDate(date)}
-                startDate={dates.start}
-                endDate={dates.end}
-                minDate={Math.max(new Date(), dates.start)}
+                onChange={(date) => handleChangeDate(date, "end")}
+                startDate={reserveData.dates.start}
+                endDate={reserveData.dates.end}
+                minDate={Math.max(new Date(), reserveData.dates.strar)}
               />
             </Form.Group>
           </Col>
@@ -79,7 +86,10 @@ export default function FormReservedRoom(props) {
               <Form.Label className="mb-0">
                 <h4>Count guests</h4>
               </Form.Label>
-              <SelectGuests />
+              <SelectGuests
+                guests={reserveData.guests}
+                changeCountGuests={handleChangeGuestsCount}
+              />
             </Form.Group>
           </Col>
         </Row>
@@ -106,12 +116,7 @@ export default function FormReservedRoom(props) {
         </Row>
         <Row className="formReservedRoom--rowButtonReserve">
           <Col>
-            <Button
-              href="/rooms"
-              variant="primary"
-              type="submit"
-              className="w-100"
-            >
+            <Button variant="primary" type="submit" className="w-100">
               RESERVE
             </Button>
           </Col>

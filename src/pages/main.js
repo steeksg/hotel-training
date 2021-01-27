@@ -21,13 +21,21 @@ const Styles = styled.div`
   }
 `;
 
-export default function MainPage() {
+export default function MainPage({
+  reserveData,
+  handleChangeDate,
+  handleChangeGuestsCount,
+}) {
   return (
     <Styles>
       <Jumbotron fluid className="jumbo">
         <Container className="d-flex flex-column justify-content-between jumboContainer">
           <div className="align-self-start">
-            <FormSearchRoom />
+            <FormSearchRoom
+              reserveData={reserveData}
+              handleChangeDate={handleChangeDate}
+              handleChangeGuestsCount={handleChangeGuestsCount}
+            />
           </div>
           <div className="d-flex justify-content-end align-self-end mt-3">
             <span className="align-self-end">

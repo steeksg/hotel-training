@@ -4,7 +4,6 @@ import { Row, Col } from "react-bootstrap";
 import "./donutChart.scss";
 
 export default function DonutChart(props) {
-  // const example = { great: 20, good: 25, acceptable: 25, bad: 0 };
   const { great, good, acceptable, bad } = props.data;
 
   const sum = great + good + acceptable + bad;
@@ -21,9 +20,7 @@ export default function DonutChart(props) {
     bad: calculatePercent(bad),
   };
 
-  //TODO: Create calculate logic and get props
-
-  //TODO: Find and fix place with props
+  //TODO: Find and fix another place with props
   const SVGDonut = () => {
     return (
       <div className="canvas">

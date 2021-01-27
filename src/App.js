@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   useLocation,
+  Redirect,
 } from "react-router-dom";
 
 import "./App.scss";
@@ -42,11 +43,37 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const [rooms, setRooms] = useState(testData);
-  const [currentRoom, setCurrentRoom] = useState(null);
+  const [state, setState] = useState({
+    rooms: testData,
+    currentRoom: null,
+    reserveData: {
+      dates: { start: null, end: null },
+      guests: { adult: 0, children: 0, babies: 0 },
+    },
+  });
+
+  const handleChangeGuestsCount = (number, type) => {
+    setState((prev) => ({
+      ...prev,
+      reserveData: {
+        ...prev.reserveData,
+        guests: { ...prev.reserveData.guests, [type]: number },
+      },
+    }));
+  };
+
+  const handleChangeDate = (date, type) => {
+    setState((prev) => ({
+      ...prev,
+      reserveData: {
+        ...prev.reserveData,
+        dates: { ...prev.reserveData.dates, [type]: date },
+      },
+    }));
+  };
 
   const handleChangeCurrentRoom = (number) => {
-    setCurrentRoom(number);
+    setState((prev) => ({ ...prev, currentRoom: number }));
   };
 
   return (
@@ -55,7 +82,13 @@ export default function App() {
         <ScrollToTop />
         <Navibar />
         <Switch>
-          <Route exact path="/" component={MainPage} />
+          <Route exact path="/">
+            <MainPage
+              reserveData={state.reserveData}
+              handleChangeDate={handleChangeDate}
+              handleChangeGuestsCount={handleChangeGuestsCount}
+            />
+          </Route>
           <Route path="/about" component={AboutPage} />
           <Route path="/roomServices" component={RoomServicesPage} />
           <Route path="/restaurant" component={RestaurantPage} />
@@ -72,15 +105,21 @@ export default function App() {
           <Route path="/rooms">
             <RoomsPage
               setCurrentRoom={handleChangeCurrentRoom}
-              allRooms={rooms}
-              currentRoom={currentRoom}
+              allRooms={state.rooms}
+              reserveData={state.reserveData}
+              handleChangeDate={handleChangeDate}
+              handleChangeGuestsCount={handleChangeGuestsCount}
             />
           </Route>
-          <Route path="/room">
+          <Route path="/room/:number">
             <RoomPage
-              room={rooms.find((item) => item.number === currentRoom)}
+              allRooms={state.rooms}
+              reserveData={state.reserveData}
+              handleChangeDate={handleChangeDate}
+              handleChangeGuestsCount={handleChangeGuestsCount}
             />
           </Route>
+          <Redirect to="/" />
         </Switch>
         <Footer />
       </Router>

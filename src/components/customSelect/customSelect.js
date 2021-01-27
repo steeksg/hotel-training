@@ -83,75 +83,83 @@ export default function CustomSelect(props) {
   };
 
   return (
-    <div className="position-relative">
+    <>
+      <div className="position-relative">
+        <div
+          className={`form-control customSelect ${
+            show && "customSelect-expand"
+          }`}
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
+          <Row>
+            <Col className="col-10">
+              <input
+                readOnly
+                type="text"
+                value={value}
+                className="customSelect--input"
+              />
+            </Col>
+            <Col className="col-2 d-flex justify-content-end">
+              <div className="customSelect--toggle">
+                <FontAwesomeIcon
+                  icon={show ? faAngleUp : faAngleDown}
+                  size="1x"
+                />
+              </div>
+            </Col>
+          </Row>
+        </div>
+        <div
+          className={`customSelect--content ${
+            show && "customSelect--content-show"
+          }`}
+        >
+          {data.map((item) => {
+            return (
+              <ContentItem
+                key={item.name}
+                title={item.name}
+                count={item.count}
+                setCount={item.setCount}
+              />
+            );
+          })}
+
+          <Row>
+            <Col>
+              <Button
+                variant="outline-primary"
+                className="customSelect--buttonFooter"
+                onClick={() => clearAll()}
+              >
+                CLEAR
+              </Button>
+            </Col>
+            <Col className="d-flex justify-content-end">
+              <Button
+                variant="outline-primary"
+                className="customSelect--buttonFooter"
+                onClick={() => {
+                  setShow(!show);
+                }}
+              >
+                TO APPLY
+              </Button>
+            </Col>
+          </Row>
+        </div>
+      </div>
       <div
-        className={`form-control customSelect ${show && "customSelect-expand"}`}
+        className={`customSelect--backgroundForBlur ${
+          show && "customSelect--backgroundForBlur-show"
+        }`}
         onClick={() => {
           setShow(!show);
         }}
-        onBlur={() => {
-          setShow(!show);
-        }}
-      >
-        <Row>
-          <Col className="col-10">
-            <input
-              readOnly
-              type="text"
-              value={value}
-              className="customSelect--input"
-            />
-          </Col>
-          <Col className="col-2 d-flex justify-content-end">
-            <div className="customSelect--toggle">
-              <FontAwesomeIcon
-                icon={show ? faAngleUp : faAngleDown}
-                size="1x"
-              />
-            </div>
-          </Col>
-        </Row>
-      </div>
-
-      <div
-        className={`customSelect--content ${
-          show && "customSelect--content-show"
-        }`}
-      >
-        {data.map((item) => {
-          return (
-            <ContentItem
-              key={item.name}
-              title={item.name}
-              count={item.count}
-              setCount={item.setCount}
-            />
-          );
-        })}
-
-        <Row>
-          <Col>
-            <Button
-              variant="outline-primary"
-              className="customSelect--buttonFooter"
-              onClick={() => clearAll()}
-            >
-              CLEAR
-            </Button>
-          </Col>
-          <Col className="d-flex justify-content-end">
-            <Button
-              variant="outline-primary"
-              className="customSelect--buttonFooter"
-              onClick={() => {
-                setShow(!show);
-              }}
-            >
-              TO APPLY
-            </Button>
-          </Col>
-        </Row>
-      </div>
-    </div>
+      ></div>
+    </>
   );
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+
 import RoomCollage from "../components/roomCollage/roomCollage";
 import FormReservedRoom from "../components/formReservedRoom/formReservedRoom";
 import RoomInformation from "../components/roomInformation/roomInformation";
@@ -7,7 +9,16 @@ import CardReview from "../components/cardReview/cardReview";
 import DonutChart from "../components/donutChart/donutChart";
 
 export default function RoomPage(props) {
-  const { roomInformation, reviews, roomReservedData } = props.room;
+  const { number } = useParams();
+  const {
+    reserveData,
+    handleChangeDate,
+    handleChangeGuestsCount,
+    allRooms,
+  } = props;
+
+  const myRoom = allRooms.find((item) => {
+    return (item.number === +number)});
 
   return (
     <>
@@ -16,23 +27,23 @@ export default function RoomPage(props) {
       </Container>
       <Container>
         <Row>
-          <Col className="col-12 col-lg-9">
+          <Col className="col-12 col-lg-8">
             <Row className="mb-3">
               <Col className="col-12 col-md-6 pl-0">
                 <Container>
                   <h3> Room Information </h3>
-                  <RoomInformation items={roomInformation} />
+                  <RoomInformation items={myRoom.roomInformation} />
                 </Container>
               </Col>
               <Col className="col-12 col-md-6">
                 <h3> Impressions of the rooms </h3>
-                <DonutChart data={reviews.counts} />
+                <DonutChart data={myRoom.reviews.counts} />
               </Col>
             </Row>
             <Row className="mb-3">
               <Container>
                 <h3>Guest reviews of the room</h3>
-                {reviews.values.map((review) => {
+                {myRoom.reviews.values.map((review) => {
                   return (
                     <CardReview
                       review={review}
@@ -68,12 +79,15 @@ export default function RoomPage(props) {
               </Col>
             </Row>
           </Col>
-          <Col className="col-12 col-lg-3 d-flex align-items-start justify-content-center">
+          <Col className="col-12 col-lg-4 d-flex align-items-start justify-content-center">
             <FormReservedRoom
-              number={roomReservedData.number}
-              dates={roomReservedData.dates}
-              guests={roomReservedData.guests}
-              price={roomReservedData.price}
+              number={number}
+              // dates={reserveData.dates}
+              // guests={reserveData.guests}
+              price={myRoom.price}
+              reserveData={reserveData}
+              handleChangeDate={handleChangeDate}
+              handleChangeGuestsCount={handleChangeGuestsCount}
             />
           </Col>
         </Row>

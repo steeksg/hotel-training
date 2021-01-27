@@ -1,21 +1,6 @@
 import Avatar_1 from "./img/user_1.png";
 import Avatar_2 from "./img/user_2.png";
 
-var Jan25_2021 = new Date(2021, 0, 25);
-var Jan28_2021 = new Date(2021, 0, 28);
-
-const roomReservedData = {
-  number: 1,
-  price: {
-    byDay: 9900,
-    service: 2485,
-    discountService: 2485,
-    additionalService: 300,
-  },
-  dates: { start: Jan25_2021, end: Jan28_2021 },
-  guests: { adult: 2, children: 1, babies: 1 },
-};
-
 const dataExample = ["comfort", "convenience", "cosiness"];
 
 const exampleDonut = () => {
@@ -45,7 +30,6 @@ const reviewsExample = [
   },
 ];
 
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max + 1));
 }
@@ -71,19 +55,22 @@ function createRandomData() {
 
     do {
       number = getRandomInt(countElements);
-    } while (isUniq());
+    } while (!isUniq(number));
 
     data.push({
       number: number,
-      price: getRandomInt(900),
+      price: {
+        byDay: getRandomInt(900),
+        service: 2485,
+        discountService: 2485,
+        additionalService: 300,
+      },
       rating: getRandomInt(5),
-      //TODO: Will make refactoring for universal solution
       roomInformation: dataExample,
       reviews: {
         counts: exampleDonut(),
         values: reviewsExample,
       },
-      roomReservedData: roomReservedData,
     });
   }
 

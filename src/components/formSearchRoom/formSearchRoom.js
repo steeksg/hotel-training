@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
@@ -7,10 +7,11 @@ import { NavLink } from "react-router-dom";
 import SelectGuests from "../selectGuests/selectGuests";
 import "./formSearchRoom.scss";
 
-export default function FormSearchRoom() {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-
+export default function FormSearchRoom({
+  reserveData,
+  handleChangeDate,
+  handleChangeGuestsCount,
+}) {
   return (
     <>
       <Form className="bg-light rounded-lg border-light pt-5 pb-4 px-3 formSearchRoom ">
@@ -23,12 +24,13 @@ export default function FormSearchRoom() {
                   <h4>ARRIVE</h4>
                 </Form.Label>
                 <DatePicker
-                  selected={startDate}
+                  selectsStart
+                  selected={reserveData.dates.start}
                   placeholderText="DD.MM.YYYY"
                   dateFormat="dd.MM.yyyy"
-                  onChange={(date) => setStartDate(date)}
-                  startDate={startDate}
-                  endDate={endDate}
+                  onChange={(date) => handleChangeDate(date, "start")}
+                  startDate={reserveData.dates.start}
+                  endDate={reserveData.dates.end}
                   minDate={new Date()}
                 />
               </Form.Group>
@@ -39,13 +41,14 @@ export default function FormSearchRoom() {
                   <h4>DEPARTURE</h4>
                 </Form.Label>
                 <DatePicker
-                  selected={endDate}
+                  selectsEnd
+                  selected={reserveData.dates.end}
                   placeholderText="DD.MM.YYYY"
                   dateFormat="dd.MM.yyyy"
-                  onChange={(date) => setEndDate(date)}
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={Math.max(new Date(), startDate)}
+                  onChange={(date) => handleChangeDate(date, "end")}
+                  startDate={reserveData.dates.start}
+                  endDate={reserveData.dates.end}
+                  minDate={Math.max(new Date(), reserveData.dates.start)}
                 />
               </Form.Group>
             </Col>
@@ -57,7 +60,10 @@ export default function FormSearchRoom() {
                 <Form.Label className="mb-0">
                   <h4>Count guests</h4>
                 </Form.Label>
-                <SelectGuests />
+                <SelectGuests
+                  guests={reserveData.guests}
+                  changeCountGuests={handleChangeGuestsCount}
+                />
               </Form.Group>
             </Col>
           </Row>
