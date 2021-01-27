@@ -75,7 +75,7 @@ export default function FormReservedRoom(props) {
                 onChange={(date) => handleChangeDate(date, "end")}
                 startDate={reserveData.dates.start}
                 endDate={reserveData.dates.end}
-                minDate={Math.max(new Date(), reserveData.dates.strat)}
+                minDate={Math.max(new Date(), reserveData.dates.start)}
               />
             </Form.Group>
           </Col>
