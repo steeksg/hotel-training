@@ -1,29 +1,18 @@
 import React from "react";
 import { Form, Row, Col, Container } from "react-bootstrap";
-import DatePicker, { registerLocale } from "react-datepicker";
-import { enGB } from "date-fns/locale";
 import { NavLink } from "react-router-dom";
 
 import SelectGuests from "../selectGuests/selectGuests";
 import CustomButton from "../customButton/customButton";
-import "./formSearchRoom.scss";
+import CustomDatepicker from "../customDatepicker/customDatepicker";
 
-registerLocale("enGB", enGB);
+import "./formSearchRoom.scss";
 
 export default function FormSearchRoom({
   reserveData,
   handleChangeDate,
   handleChangeGuestsCount,
 }) {
-  const ButtonLine = () => {
-    return (
-      <div className="buttonLine ">
-        <div className="buttonLine--clear">clear</div>
-        <div className="buttonLine--apply">apply</div>
-      </div>
-    );
-  };
-
   return (
     <>
       <Form className="bg-light rounded-lg border-light pt-5 pb-4 px-3 formSearchRoom ">
@@ -35,22 +24,12 @@ export default function FormSearchRoom({
                 <Form.Label className="mb-0">
                   <h4>ARRIVE</h4>
                 </Form.Label>
-                <DatePicker
-                  locale="enGB"
-                  selectsStart
-                  selected={reserveData.dates.start}
-                  placeholderText="DD.MM.YYYY"
-                  dateFormat="dd.MM.yyyy"
-                  onChange={(date) => handleChangeDate(date, "start")}
+                <CustomDatepicker
+                  selectsStart="selectsStart"
+                  onChange={handleChangeDate}
                   startDate={reserveData.dates.start}
                   endDate={reserveData.dates.end}
-                  minDate={new Date()}
-                >
-                  <div className="buttonLine ">
-                    <div className="buttonLine--clear">clear</div>
-                    <div className="buttonLine--apply">apply</div>
-                  </div>
-                </DatePicker>
+                />
               </Form.Group>
             </Col>
             <Col className="col-12 col-sm-6">
@@ -58,16 +37,11 @@ export default function FormSearchRoom({
                 <Form.Label className="mb-0">
                   <h4>DEPARTURE</h4>
                 </Form.Label>
-                <DatePicker
-                  locale="enGB"
-                  selectsEnd
-                  selected={reserveData.dates.end}
-                  placeholderText="DD.MM.YYYY"
-                  dateFormat="dd.MM.yyyy"
-                  onChange={(date) => handleChangeDate(date, "end")}
+                <CustomDatepicker
+                  selectsEnd="selectsEnd"
+                  onChange={handleChangeDate}
                   startDate={reserveData.dates.start}
                   endDate={reserveData.dates.end}
-                  minDate={Math.max(new Date(), reserveData.dates.start)}
                 />
               </Form.Group>
             </Col>

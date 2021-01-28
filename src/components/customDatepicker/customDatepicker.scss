@@ -122,8 +122,6 @@ $boldWidth: 2.358rem;
       padding-left: 0.166rem;
       padding-right: 0.166rem;
 
-      // width: 2.032rem;
-
       width: $boldWidth;
     }
 
@@ -158,12 +156,8 @@ $boldWidth: 2.358rem;
       border-radius: 50%;
       color: white;
       font-weight: bold;
-      margin-left: 0;
-      margin-right: 0;
-
-      // padding-left: 0.166rem;
-      // padding-right: 0.166rem;
-      // width: 1.7rem;
+      margin-left: 0.166rem;
+      margin-right: 0.166rem;
 
       padding-left: 0.166rem;
       padding-right: 0.166rem;
@@ -238,4 +232,21 @@ $boldWidth: 2.358rem;
     font-size: 19px;
     margin-bottom: 30px;
   }
+}
+
+.buttonLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: bold;
+  color: #bc9cff;
+  text-transform: uppercase;
+
+  &--clear, &--apply {
+    cursor: pointer;
+  }
+  
 }
