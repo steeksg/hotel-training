@@ -1,14 +1,49 @@
 @import "~react-datepicker/src/stylesheets/datepicker";
 
+$normalWidth: 2.025rem;
+$boldWidth: 2.358rem;
+
 .react-datepicker {
   color: #000;
   border: 1px solid #aeaeae;
   border-radius: 0.3rem;
   display: inline-block;
   position: relative;
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  display:flex;
+  flex-direction: column;
 
   &-wrapper {
     width: 100%;
+  }
+
+  &__triangle {
+    display: none;
+  }
+
+  &__header {
+    background-color: white;
+    border-bottom: none;
+  }
+
+  &__navigation {
+    &--next, &--previous {
+      top: 28px;
+      width: 24px;
+      height: 24px;
+      border: none;
+    }
+
+    &--next {
+      background: url(../../img/arrow_forward.svg) no-repeat;
+      right:25px;
+    }
+    &--previous {
+      background: url(../../img/arrow_back.svg) no-repeat;
+      left:25px;
+    }
+
   }
 
   &__input-container input {
@@ -57,10 +92,28 @@
   }
 
   &__day {
+    color: rgba(31, 32, 65, 0.75);
+
+    &:focus {
+      outline: none !important;
+    }
+
+    width: $normalWidth;
+    line-height: $normalWidth;
+
+    &--disabled {
+      color: rgba(31, 32, 65, 0.5);
+    }
+
+    &-name {
+      color: #bc9cff;
+      font-weight: bold;
+      width: $normalWidth;
+    }
+
     &--in-range {
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-      opacity: 0.5;
-      color: black;
+      background-color: rgba(188, 156, 255, 0.25) !important;
+      color: rgba(31, 32, 65, 0.75) !important;
       border-radius: 0;
 
       margin-left: 0;
@@ -69,20 +122,34 @@
       padding-left: 0.166rem;
       padding-right: 0.166rem;
 
-      width: 2.032rem;
+      // width: 2.032rem;
+
+      width: $boldWidth;
+    }
+
+    &--in-selecting-range {
+      background-color: rgba(188, 156, 255, 0.25);
+      color: rgba(31, 32, 65, 0.75);
+
+      &:hover {
+        background-color: rgba(188, 156, 255, 0.75);
+        color: rgba(31, 32, 65, 0.75);
+      }
     }
 
     &--today {
       background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%) !important;
       border-radius: 50% !important;
       color: white !important;
-      font-weight: normal !important;
+      font-weight: bold !important;
       opacity: 1 !important;
     }
 
     &--keyboard-selected {
       border-radius: 50%;
       background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
+      opacity: 1;
+      color: white;
     }
 
     &--selected {
@@ -90,20 +157,30 @@
       opacity: 1;
       border-radius: 50%;
       color: white;
+      font-weight: bold;
       margin-left: 0;
       margin-right: 0;
 
+      // padding-left: 0.166rem;
+      // padding-right: 0.166rem;
+      // width: 1.7rem;
+
       padding-left: 0.166rem;
       padding-right: 0.166rem;
-      width: 1.7rem;
+      width: $normalWidth;
     }
 
     &--range {
       &-end {
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
+        background: linear-gradient(
+          180deg,
+          #bc9cff 0%,
+          #8ba4f9 100%
+        ) !important;
         border-radius: 0 50% 50% 0 !important;
         opacity: 1 !important;
-        color: white;
+        color: white !important;
+        font-weight: bold;
 
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -111,13 +188,22 @@
         padding-left: 0.166rem !important;
         padding-right: 0.166rem !important;
 
-        width: 2.032rem !important;
+        // width: 2.032rem !important;
+
+        width: $boldWidth !important;
+
+        
       }
       &-start {
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
+        background: linear-gradient(
+          180deg,
+          #bc9cff 0%,
+          #8ba4f9 100%
+        ) !important;
         border-radius: 50% 0 0 50% !important;
         opacity: 1 !important;
         color: white !important;
+        font-weight: bold;
 
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -125,7 +211,9 @@
         padding-left: 0.166rem !important;
         padding-right: 0.166rem !important;
 
-        width: 2.032rem !important;
+        // width: 2.032rem !important;
+
+        width: $boldWidth !important;
       }
     }
 
@@ -137,7 +225,17 @@
       margin-left: 0.166rem;
       margin-right: 0.166rem;
 
-      width: 1.7rem;
+      // width: 1.7rem;
+
+      padding-left: 0.166rem;
+      padding-right: 0.166rem;
+      width: $normalWidth;
     }
+  }
+
+  &__current-month {
+    font-weight: bold;
+    font-size: 19px;
+    margin-bottom: 30px;
   }
 }

@@ -22,6 +22,7 @@ export default function RoomsSidebar({
         <h4>dates of stay</h4>
         <DatePicker
           selectsRange
+          shouldCloseOnSelect={false}
           selected={reserveData.dates.start}
           placeholderText="DD.MM.YYYY"
           dateFormat="dd.MM.yyyy"
