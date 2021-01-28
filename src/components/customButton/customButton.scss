@@ -1,0 +1,16 @@
+.customButton {
+  position: relative;
+
+  &--button {
+    width: 100%;
+    text-transform: uppercase;
+  }
+  &--arrow {
+    position: absolute;
+    top:5px;
+    right:15px;
+    bottom:0;
+    width: 20px;
+    height: 20px;
+  }
+}

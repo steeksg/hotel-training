@@ -40,6 +40,7 @@ export default function RoomsContent({
                   price={room.price.byDay}
                   rating={room.rating}
                   reviews={room.reviews}
+                  photos={room.photos}
                 />
               );
             })}

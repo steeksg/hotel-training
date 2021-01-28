@@ -1,0 +1,15 @@
+.custom-radio .custom-control-label::before {
+  border-radius: 50%;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg'  fill='%23bc9cff' viewBox='0 0 40 40' %3e%3ccircle  r='50%' cx='50%' cy='50%' /%3e%3c/svg%3e");
+  width: 20px;
+  height: 20px;
+}
+
+.custom-radio
+  .custom-control-input:disabled:checked
+  ~ .custom-control-label::before {
+  background-color: rgba(0, 123, 255, 0.5);
+}

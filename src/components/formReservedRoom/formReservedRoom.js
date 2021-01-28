@@ -1,8 +1,9 @@
 import React from "react";
-import { Row, Col, Form, Container, Button } from "react-bootstrap";
+import { Row, Col, Form, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
 import SelectGuests from "../selectGuests/selectGuests";
+import CustomButton from "../customButton/customButton";
 
 import "./formReservedRoom.scss";
 
@@ -116,9 +117,7 @@ export default function FormReservedRoom(props) {
         </Row>
         <Row className="formReservedRoom--rowButtonReserve">
           <Col>
-            <Button variant="primary" type="submit" className="w-100">
-              RESERVE
-            </Button>
+            <CustomButton title="reserve" />
           </Col>
         </Row>
       </Container>

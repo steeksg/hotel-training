@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
+import { Form, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
 import { NavLink } from "react-router-dom";
 
 import SelectGuests from "../selectGuests/selectGuests";
+import CustomButton from "../customButton/customButton";
 import "./formSearchRoom.scss";
 
 export default function FormSearchRoom({
@@ -70,15 +71,10 @@ export default function FormSearchRoom({
 
           <Row className="mt-3">
             <Col>
-              <Button
-                as={NavLink}
-                to="/rooms"
-                variant="primary"
-                type="submit"
-                className="w-100"
-              >
-                FIND ROOMS
-              </Button>
+              <CustomButton 
+              as={NavLink} 
+              to="/rooms" 
+              title="find rooms" />
             </Col>
           </Row>
         </Container>

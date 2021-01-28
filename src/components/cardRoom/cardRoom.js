@@ -41,7 +41,7 @@ export default function CardRoom(props) {
             </Col>
           </Row>
           <div className="cardRoom--divider"></div>
-          <Row >
+          <Row>
             <Col className="pl-2 col-6 d-flex align-content-center pr-0">
               <Ratings
                 rating={rating}

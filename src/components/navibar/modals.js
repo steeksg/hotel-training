@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Modal, Form, Button, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
+import CustomButton from "../customButton/customButton";
+
 export function ModalLogIn(props) {
   const { showLogIn, handleClose } = props;
 
@@ -33,12 +35,7 @@ export function ModalLogIn(props) {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicLogIn">
-                <Button
-                  variant="primary"
-                  className="modalLogIn--buttonLogIn w-100"
-                >
-                  LOG IN
-                </Button>
+                <CustomButton title="log in" />
               </Form.Group>
 
               <Form.Group
@@ -55,6 +52,7 @@ export function ModalLogIn(props) {
                 >
                   SIGN UP
                 </Button>
+                
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -150,12 +148,7 @@ export function ModalSignUp(props) {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicLogIn">
-                <Button
-                  variant="primary"
-                  className="modalSignUp--buttonLogIn w-100"
-                >
-                  SIGN UP
-                </Button>
+                <CustomButton title="sign up" />
               </Form.Group>
 
               <Form.Group

@@ -36,8 +36,28 @@
 
 .carousel {
   &-indicators {
-    margin-bottom: 0;
     margin-left: 0;
-    margin-right: 0;
+    margin-right: 5%;
+    left: auto;
+
+    li {
+      box-sizing: content-box;
+      flex: 0 1 auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-right: 3px;
+      margin-left: 3px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-color: transparent;
+      background-clip: padding-box;
+      transition: opacity 0.6s ease;
+    }
+
+    .active {
+      background-color: white;
+    }
   }
 }
