@@ -13,6 +13,7 @@ export default function CustomDatepicker({
   endDate,
   onChange,
 }) {
+
   const clearDates = () => {
     onChange(null, "start");
     onChange(null, "end");
@@ -28,12 +29,10 @@ export default function CustomDatepicker({
       .dispatchEvent(event);
 
     //   document.getElementsByClassName("react-datepicker-popper")[0].removeAttribute('data-show')
-    setOpen(false);
   };
 
   return (
     <DatePicker
-    open={open}
       locale="enGB"
       selectsStart={selectsStart}
       selectsEnd={selectsEnd}

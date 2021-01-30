@@ -1,0 +1,17 @@
+@import "~react-dates/lib/css/_datepicker.css";
+
+.dp {
+  position: relative;
+}
+
+.DateRangePicker  {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.DateRangePicker_picker {
+  visibility: visible;
+}
