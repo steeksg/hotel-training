@@ -7,7 +7,6 @@ import CustomButton from "../customButton/customButton";
 import CustomDatepicker from "../customDatepicker/customDatepicker";
 import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
 
-
 import "./formSearchRoom.scss";
 
 export default function FormSearchRoom({
@@ -20,7 +19,7 @@ export default function FormSearchRoom({
       <Form className="bg-light rounded-lg border-light pt-5 pb-4 px-3 formSearchRoom ">
         <Container>
           <h3>Will find rooms according to your wishes</h3>
-          <Row className="mt-3">
+          {/* <Row className="mt-3">
             <Col className="col-12 col-sm-6">
               <Form.Group controlId="formDateArrive">
                 <Form.Label className="mb-0">
@@ -47,9 +46,9 @@ export default function FormSearchRoom({
                 />
               </Form.Group>
             </Col>
-          </Row>
-          
-                <CustomDatepicker2 />
+          </Row> */}
+
+          <CustomDatepicker2 />
 
           <Row className="mt-2">
             <Col>

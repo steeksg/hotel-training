@@ -2,6 +2,11 @@
 
 .dp {
   position: relative;
+
+  &--input {
+    width: 100%;
+    background-color: white !important;
+  }
 }
 
 .DateRangePicker  {
