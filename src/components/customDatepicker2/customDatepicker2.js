@@ -18,6 +18,7 @@ export default function CustomDatepicker2({
   setDate,
 }) {
   const [focusedInput, setFocusedInput] = useState(null);
+  const [focused, setFocused] = useState(null);
 
   const changeHandler = ({ startDate, endDate }) => {
     setDates({
@@ -34,12 +35,12 @@ export default function CustomDatepicker2({
     setFocusedInput(focusedInput);
   };
 
-  const startDateString = dates.startDate
-    ? dates.startDate.format("DD.MM.YYYY")
-    : "DD.MM.YYYY";
-  const endDateString = dates.endDate
-    ? dates.endDate.format("DD.MM.YYYY")
-    : "DD.MM.YYYY";
+  const startDateString =
+    dates && dates.startDate
+      ? dates.startDate.format("DD.MM.YYYY")
+      : "DD.MM.YYYY";
+  const endDateString =
+    dates && dates.endDate ? dates.endDate.format("DD.MM.YYYY") : "DD.MM.YYYY";
   const dateString = date ? date.format("DD.MM.YYYY") : "DD.MM.YYYY";
 
   const CustomMonthNav = ({ left }) => {
@@ -60,7 +61,15 @@ export default function CustomDatepicker2({
         <div
           className="dp--button"
           onClick={() => {
-            setDates({ startDate: null, endDate: null });
+            switch (type) {
+              case "rangeDouble":
+              case "rangeSingle": {
+                setDates({ startDate: null, endDate: null });
+                break;
+              }
+              default:
+                singleChangeHandler(null);
+            }
           }}
         >
           clear
@@ -68,7 +77,15 @@ export default function CustomDatepicker2({
         <div
           className="dp--button"
           onClick={() => {
-            focusHandler(null);
+            switch (type) {
+              case "rangeDouble":
+              case "rangeSingle": {
+                focusHandler(null);
+                break;
+              }
+              default:
+                setFocused(null);
+            }
           }}
         >
           apply
@@ -80,34 +97,36 @@ export default function CustomDatepicker2({
   const InputRangeDouble = () => {
     return (
       <>
-        <Col className="col-12 col-sm-6 mb-2">
-          <h4>ARRIVE</h4>
-          <input
-            className="dp--input form-control"
-            type="text"
-            name="start date"
-            value={startDateString}
-            readOnly
-            onClick={() => {
-              focusHandler("startDate");
-            }}
-            placeholder="DD.MM.YYYY"
-          />
-        </Col>
-        <Col className="col-12 col-sm-6">
-          <h4>DEPARTURE</h4>
-          <input
-            className="dp--input form-control"
-            type="text"
-            name="end date"
-            value={endDateString}
-            readOnly
-            onClick={() => {
-              focusHandler("endDate");
-            }}
-            placeholder="DD.MM.YYYY"
-          />
-        </Col>
+        <Row>
+          <Col className="col-12 col-sm-6 mb-2">
+            <h4>ARRIVE</h4>
+            <input
+              className="dp--input form-control"
+              type="text"
+              name="start date"
+              value={startDateString}
+              readOnly
+              onClick={() => {
+                focusHandler("startDate");
+              }}
+              placeholder="DD.MM.YYYY"
+            />
+          </Col>
+          <Col className="col-12 col-sm-6">
+            <h4>DEPARTURE</h4>
+            <input
+              className="dp--input form-control"
+              type="text"
+              name="end date"
+              value={endDateString}
+              readOnly
+              onClick={() => {
+                focusHandler("endDate");
+              }}
+              placeholder="DD.MM.YYYY"
+            />
+          </Col>
+        </Row>
       </>
     );
   };
@@ -115,20 +134,22 @@ export default function CustomDatepicker2({
   const InputRangeSingle = () => {
     return (
       <>
-        <Col className="col-12">
-          <h4>dates of stay</h4>
-          <input
-            className="dp--input form-control"
-            type="text"
-            name="start date"
-            value={`${startDateString}-${endDateString}`}
-            readOnly
-            onClick={() => {
-              focusHandler("startDate");
-            }}
-            placeholder="DD.MM.YYYY"
-          />
-        </Col>
+        <Row>
+          <Col className="col-12">
+            <h4>dates of stay</h4>
+            <input
+              className="dp--input form-control"
+              type="text"
+              name="start date"
+              value={`${startDateString}-${endDateString}`}
+              readOnly
+              onClick={() => {
+                focusHandler("startDate");
+              }}
+              placeholder="DD.MM.YYYY"
+            />
+          </Col>
+        </Row>
       </>
     );
   };
@@ -139,11 +160,11 @@ export default function CustomDatepicker2({
         <input
           className="dp--input form-control"
           type="text"
-          name="start date"
+          name="date"
           value={`${dateString}`}
           readOnly
           onClick={() => {
-            focusHandler("startDate");
+            setFocused(true);
           }}
           placeholder="DD.MM.YYYY"
         />
@@ -160,38 +181,21 @@ export default function CustomDatepicker2({
         return <InputRangeSingle />;
       }
       default:
-      // return <InputDateSingle />;
+        return <InputDateSingle />;
     }
   };
 
   const Range = () => {
-    <DateRangePicker
-      startDateId="startDateId"
-      endDateId="endDateId"
-      minimumNights={1}
-      startDate={dates.startDate}
-      endDate={dates.endDate}
-      onDatesChange={({ startDate, endDate }) =>
-        changeHandler({ startDate, endDate })
-      }
-      focusedInput={focusedInput}
-      onFocusChange={(focusedInput) => focusHandler(focusedInput)}
-      numberOfMonths={1}
-      hideKeyboardShortcutsPanel
-      firstDayOfWeek={1}
-      navPrev={<CustomMonthNav left />}
-      navNext={<CustomMonthNav right />}
-      renderCalendarInfo={() => {
-        return <BottomPanel />;
-      }}
-    />;
-  };
-
-  const Single = () => {
     return (
-      <SingleDatePicker
-        date={dates.startDate}
-        onDatesChange={singleChangeHandler}
+      <DateRangePicker
+        startDateId="startDateId"
+        endDateId="endDateId"
+        minimumNights={1}
+        startDate={dates.startDate}
+        endDate={dates.endDate}
+        onDatesChange={({ startDate, endDate }) =>
+          changeHandler({ startDate, endDate })
+        }
         focusedInput={focusedInput}
         onFocusChange={(focusedInput) => focusHandler(focusedInput)}
         numberOfMonths={1}
@@ -199,21 +203,39 @@ export default function CustomDatepicker2({
         firstDayOfWeek={1}
         navPrev={<CustomMonthNav left />}
         navNext={<CustomMonthNav right />}
-        // renderCalendarInfo={() => {
-        //   return <BottomPanel />;
-        // }}
+        renderCalendarInfo={() => {
+          return <BottomPanel />;
+        }}
+      />
+    );
+  };
+
+  const Single = () => {
+    return (
+      <SingleDatePicker
+        date={date}
+        onDateChange={singleChangeHandler}
+        focused={focused}
+        onFocusChange={({ focused }) => setFocused(focused)}
+        numberOfMonths={1}
+        hideKeyboardShortcutsPanel
+        firstDayOfWeek={1}
+        navPrev={<CustomMonthNav left />}
+        navNext={<CustomMonthNav right />}
+        renderCalendarInfo={() => {
+          return <BottomPanel />;
+        }}
       />
     );
   };
 
   const DatePicker = () => {
     switch (type) {
-      case ("rangeDouble", "rangeSingle"): {
-        console.log(type);
+      case "rangeDouble":
+      case "rangeSingle": {
         return <Range />;
       }
       default:
-        console.log(type);
         return <Single />;
     }
   };
@@ -221,29 +243,7 @@ export default function CustomDatepicker2({
   return (
     <>
       <div className="dp">
-        <Row>
-          <InputDate />
-        </Row>
-        {/* <DateRangePicker
-          startDateId="startDateId"
-          endDateId="endDateId"
-          minimumNights={1}
-          startDate={dates.startDate}
-          endDate={dates.endDate}
-          onDatesChange={({ startDate, endDate }) =>
-            changeHandler({ startDate, endDate })
-          }
-          focusedInput={focusedInput}
-          onFocusChange={(focusedInput) => focusHandler(focusedInput)}
-          numberOfMonths={1}
-          hideKeyboardShortcutsPanel
-          firstDayOfWeek={1}
-          navPrev={<CustomMonthNav left />}
-          navNext={<CustomMonthNav right />}
-          renderCalendarInfo={() => {
-            return <BottomPanel />;
-          }}
-        /> */}
+        <InputDate />
         <DatePicker />
       </div>
     </>
