@@ -25,6 +25,7 @@ export default function MainPage({
   reserveData,
   handleChangeDate,
   handleChangeGuestsCount,
+  changeDateHandler
 }) {
   return (
     <Styles>

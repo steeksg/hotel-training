@@ -47,7 +47,7 @@ export default function App() {
     rooms: testData,
     currentRoom: null,
     reserveData: {
-      dates: { start: null, end: null },
+      dates: { startDate: null, endDate: null },
       guests: { adult: 0, children: 0, babies: 0 },
     },
   });
@@ -62,15 +62,29 @@ export default function App() {
     }));
   };
 
-  const handleChangeDate = (date, type) => {
+  const handleChangeDate = ({ startDate, endDate }) => {
+  // const handleChangeDate = (date, type) => {
+    // setState((prev) => ({
+    //   ...prev,
+    //   reserveData: {
+    //     ...prev.reserveData,
+    //     dates: { ...prev.reserveData.dates, [type]: date },
+    //   },
+    // }));
+
     setState((prev) => ({
       ...prev,
       reserveData: {
         ...prev.reserveData,
-        dates: { ...prev.reserveData.dates, [type]: date },
+        dates: {
+          ...prev.reserveData.dates,
+          startDate: startDate,
+          endDate: endDate,
+        },
       },
     }));
   };
+
 
   const handleChangeCurrentRoom = (number) => {
     setState((prev) => ({ ...prev, currentRoom: number }));

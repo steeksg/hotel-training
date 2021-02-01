@@ -1,10 +1,10 @@
 import React from "react";
-import DatePicker from "react-datepicker";
 import { Row, Col, Form } from "react-bootstrap";
 
 import CustomRange from "../customRange/customRange";
 import SelectGuests from "../selectGuests/selectGuests";
 import SelectComfort from "../selectComfort/selectComfort";
+import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
 
 import "./roomsSidebar.scss";
 
@@ -19,20 +19,10 @@ export default function RoomsSidebar({
   return (
     <Form>
       <Form.Group controlId="controlDateOfStay">
-        <h4>dates of stay</h4>
-        <DatePicker
-          selectsRange
-          shouldCloseOnSelect={false}
-          selected={reserveData.dates.start}
-          placeholderText="DD.MM.YYYY"
-          dateFormat="dd.MM.yyyy"
-          onChange={(dates) => {
-            handleChangeDate(dates[0], "start");
-            handleChangeDate(dates[1], "end");
-          }}
-          startDate={reserveData.dates.start}
-          endDate={reserveData.dates.end}
-          minDate={new Date()}
+        <CustomDatepicker2
+          setDates={handleChangeDate}
+          dates={reserveData.dates}
+          type="rangeSingle"
         />
       </Form.Group>
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Form, Container } from "react-bootstrap";
-import DatePicker from "react-datepicker";
 
 import SelectGuests from "../selectGuests/selectGuests";
 import CustomButton from "../customButton/customButton";
@@ -47,42 +46,11 @@ export default function FormReservedRoom(props) {
             by day
           </Col>
         </Row>
-        <Row className="formReservedRoom--rowDates">
-          <Col className="col-12 col-sm-6">
-            <Form.Group controlId="formDateArrive">
-              <Form.Label className="mb-0">
-                <h4>ARRIVE</h4>
-              </Form.Label>
-              <DatePicker
-                selectsStart
-                selected={reserveData.dates.start}
-                placeholderText="DD.MM.YYYY"
-                dateFormat="dd.MM.yyyy"
-                onChange={(date) => handleChangeDate(date, "start")}
-                startDate={reserveData.dates.start}
-                endDate={reserveData.dates.end}
-                minDate={new Date()}
-              />
-            </Form.Group>
-          </Col>
-          <Col className="col-12 col-sm-6">
-            <Form.Group controlId="formDateDeparture">
-              <Form.Label className="mb-0">
-                <h4>DEPARTURE</h4>
-              </Form.Label>
-              <DatePicker
-                selectsEnd
-                selected={reserveData.dates.end}
-                placeholderText="DD.MM.YYYY"
-                dateFormat="dd.MM.yyyy"
-                onChange={(date) => handleChangeDate(date, "end")}
-                startDate={reserveData.dates.start}
-                endDate={reserveData.dates.end}
-                minDate={Math.max(new Date(), reserveData.dates.start)}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+        <CustomDatepicker2
+          setDates={handleChangeDate}
+          dates={reserveData.dates}
+          type="rangeDouble"
+        />
         <Row className="formReservedRoom--rowGuests">
           <Col>
             <Form.Group controlId="controlSelectCountGuests">
