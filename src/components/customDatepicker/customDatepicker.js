@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import { enGB } from "date-fns/locale";
 
@@ -20,7 +20,7 @@ export default function CustomDatepicker({
   };
 
 
-  const [open, setOpen] = useState(null);
+  // const [open, setOpen] = useState(null);
 
   const applyHandler = () => {
     let event = new Event("handleCalendarClickOutside");

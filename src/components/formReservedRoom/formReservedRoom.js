@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 import SelectGuests from "../selectGuests/selectGuests";
 import CustomButton from "../customButton/customButton";
 
+import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
+
 import "./formReservedRoom.scss";
 
 export default function FormReservedRoom(props) {
