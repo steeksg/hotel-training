@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Form, Button, Container } from "react-bootstrap";
-import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
+import CustomDatepicker from "../customDatepicker/customDatepicker";
 
 import CustomButton from "../customButton/customButton";
 
@@ -114,7 +114,7 @@ export function ModalSignUp(props) {
                 <Form.Label className="mb-0">
                   <h4 className="mb-1">Date of birth</h4>
                 </Form.Label>
-                <CustomDatepicker2 date={birthDate} setDate={setBirthDate} />
+                <CustomDatepicker date={birthDate} setDate={setBirthDate} />
               </Form.Group>
 
               <Form.Group controlId="formSignUpEmail">

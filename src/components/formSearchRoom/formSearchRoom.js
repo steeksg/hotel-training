@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import SelectGuests from "../selectGuests/selectGuests";
 import CustomButton from "../customButton/customButton";
-import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
+import CustomDatepicker from "../customDatepicker/customDatepicker";
 
 import "./formSearchRoom.scss";
 
@@ -19,7 +19,7 @@ export default function FormSearchRoom({
         <Container>
           <h3 className="mb-4">Will find rooms according to your wishes</h3>
 
-          <CustomDatepicker2
+          <CustomDatepicker
             setDates={handleChangeDate}
             dates={reserveData.dates}
             type="rangeDouble"

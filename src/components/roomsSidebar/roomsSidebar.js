@@ -4,7 +4,7 @@ import { Row, Col, Form } from "react-bootstrap";
 import CustomRange from "../customRange/customRange";
 import SelectGuests from "../selectGuests/selectGuests";
 import SelectComfort from "../selectComfort/selectComfort";
-import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
+import CustomDatepicker from "../customDatepicker/customDatepicker";
 
 import "./roomsSidebar.scss";
 
@@ -19,7 +19,7 @@ export default function RoomsSidebar({
   return (
     <Form>
       <Form.Group controlId="controlDateOfStay">
-        <CustomDatepicker2
+        <CustomDatepicker
           setDates={handleChangeDate}
           dates={reserveData.dates}
           type="rangeSingle"

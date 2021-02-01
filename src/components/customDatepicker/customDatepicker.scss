@@ -1,252 +1,129 @@
-@import "~react-datepicker/src/stylesheets/datepicker";
+@import "~react-dates/lib/css/_datepicker.css";
 
-$normalWidth: 2.025rem;
-$boldWidth: 2.358rem;
-
-.react-datepicker {
-  color: #000;
-  border: 1px solid #aeaeae;
-  border-radius: 0.3rem;
-  display: inline-block;
+.dp {
   position: relative;
-  font-family: "Montserrat", sans-serif;
-  padding: 20px;
-  display:flex;
-  flex-direction: column;
 
-  &-wrapper {
+  &--input {
     width: 100%;
+    background-color: white !important;
   }
 
-  &__triangle {
-    display: none;
-  }
-
-  &__header {
-    background-color: white;
-    border-bottom: none;
-  }
-
-  &__navigation {
-    &--next, &--previous {
-      top: 28px;
-      width: 24px;
-      height: 24px;
-      border: none;
-    }
-
-    &--next {
-      background: url(../../img/arrow_forward.svg) no-repeat;
-      right:25px;
-    }
-    &--previous {
-      background: url(../../img/arrow_back.svg) no-repeat;
-      left:25px;
-    }
-
-  }
-
-  &__input-container input {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-top-color: rgb(206, 212, 218);
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-right-color: rgb(206, 212, 218);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-bottom-color: rgb(206, 212, 218);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-color: rgb(206, 212, 218);
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-    border-radius: 0.25rem;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition-property: border-color, box-shadow;
-    transition-duration: 0.15s, 0.15s;
-    transition-timing-function: ease-in-out, ease-in-out;
-    transition-delay: 0s, 0s;
-  }
-
-  &-popper {
-    z-index: 10;
-  }
-
-  &__day {
-    color: rgba(31, 32, 65, 0.75);
-
-    &:focus {
-      outline: none !important;
-    }
-
-    width: $normalWidth;
-    line-height: $normalWidth;
-
-    &--disabled {
-      color: rgba(31, 32, 65, 0.5);
-    }
-
-    &-name {
-      color: #bc9cff;
-      font-weight: bold;
-      width: $normalWidth;
-    }
-
-    &--in-range {
-      background-color: rgba(188, 156, 255, 0.25) !important;
-      color: rgba(31, 32, 65, 0.75) !important;
-      border-radius: 0;
-
-      margin-left: 0;
-      margin-right: 0;
-
-      padding-left: 0.166rem;
-      padding-right: 0.166rem;
-
-      width: $boldWidth;
-    }
-
-    &--in-selecting-range {
-      background-color: rgba(188, 156, 255, 0.25);
-      color: rgba(31, 32, 65, 0.75);
-
-      &:hover {
-        background-color: rgba(188, 156, 255, 0.75);
-        color: rgba(31, 32, 65, 0.75);
-      }
-    }
-
-    &--today {
-      background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%) !important;
-      border-radius: 50% !important;
-      color: white !important;
-      font-weight: bold !important;
-      opacity: 1 !important;
-    }
-
-    &--keyboard-selected {
-      border-radius: 50%;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
-      opacity: 1;
-      color: white;
-    }
-
-    &--selected {
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%) !important;
-      opacity: 1;
-      border-radius: 50%;
-      color: white;
-      font-weight: bold;
-      margin-left: 0.166rem;
-      margin-right: 0.166rem;
-
-      padding-left: 0.166rem;
-      padding-right: 0.166rem;
-      width: $normalWidth;
-    }
-
-    &--range {
-      &-end {
-        background: linear-gradient(
-          180deg,
-          #bc9cff 0%,
-          #8ba4f9 100%
-        ) !important;
-        border-radius: 0 50% 50% 0 !important;
-        opacity: 1 !important;
-        color: white !important;
-        font-weight: bold;
-
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-
-        padding-left: 0.166rem !important;
-        padding-right: 0.166rem !important;
-
-        // width: 2.032rem !important;
-
-        width: $boldWidth !important;
-
-        
-      }
-      &-start {
-        background: linear-gradient(
-          180deg,
-          #bc9cff 0%,
-          #8ba4f9 100%
-        ) !important;
-        border-radius: 50% 0 0 50% !important;
-        opacity: 1 !important;
-        color: white !important;
-        font-weight: bold;
-
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-
-        padding-left: 0.166rem !important;
-        padding-right: 0.166rem !important;
-
-        // width: 2.032rem !important;
-
-        width: $boldWidth !important;
-      }
-    }
-
-    &:hover {
-      border-radius: 50%;
-
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 0.166rem;
-      margin-right: 0.166rem;
-
-      // width: 1.7rem;
-
-      padding-left: 0.166rem;
-      padding-right: 0.166rem;
-      width: $normalWidth;
-    }
-  }
-
-  &__current-month {
+  &--bottomPanel {
+    color: #bc9cff;
+    text-transform: uppercase;
     font-weight: bold;
-    font-size: 19px;
-    margin-bottom: 30px;
+    cursor: pointer;
   }
 }
 
-.buttonLine {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-weight: bold;
-  color: #bc9cff;
-  text-transform: uppercase;
+.DateRangePicker,
+.SingleDatePicker {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  border-radius: 4px;
 
-  &--clear, &--apply {
-    cursor: pointer;
+  @media (max-width: 320px) {
+    top: 70px;
+    left: -45px;
+    right: 0;
   }
-  
+
+  @media (max-width: 576px) {
+    top: 70px;
+  }
+
+  &_picker {
+    visibility: visible;
+  }
+}
+
+.DayPicker {
+  &_weekHeader {
+    top: 70px;
+    small {
+      color: #bc9cff;
+      font-weight: bold;
+      font-size: 100%;
+    }
+  }
+}
+
+.DayPickerNavigation {
+  &__horizontal {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+
+    top: 15px;
+  }
+}
+
+.CalendarMonth {
+  &_caption {
+    margin-bottom: 20px;
+  }
+}
+
+.CalendarDay {
+  border-radius: 50%;
+
+  &__default {
+    border: none;
+    color: #484848;
+    background: #fff;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &__today {
+    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+
+  &__selected {
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+    color: white;
+    font-weight: bold;
+
+    &_start,
+    &_end {
+      color: white;
+      font-weight: bold;
+
+      background: url(../../img/select.svg) top left/38px 38px no-repeat;
+      background-color: rgba(188, 156, 255, 0.25);
+    }
+    &_start {
+      border-radius: 50% 0 0 50%;
+    }
+
+    &_end {
+      border-radius: 0 50% 50% 0;
+    }
+
+    &_span {
+      background-color: rgba(188, 156, 255, 0.25);
+      border-radius: 0%;
+    }
+
+    &:hover {
+      background: url(../../img/select.svg) top left/38px 38px no-repeat;
+      background-color: rgba(188, 156, 255, 0.25);
+    }
+  }
+  &__hovered_span {
+    background-color: rgba(188, 156, 255, 0.25) !important;
+    border-radius: 0%;
+  }
 }

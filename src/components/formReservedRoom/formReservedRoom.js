@@ -4,7 +4,7 @@ import { Row, Col, Form, Container } from "react-bootstrap";
 import SelectGuests from "../selectGuests/selectGuests";
 import CustomButton from "../customButton/customButton";
 
-import CustomDatepicker2 from "../customDatepicker2/customDatepicker2";
+import CustomDatepicker from "../customDatepicker/customDatepicker";
 
 import "./formReservedRoom.scss";
 
@@ -19,7 +19,7 @@ export default function FormReservedRoom(props) {
 
   const getDays = () => {
     const msDay = 60 * 60 * 24 * 1000;
-    return (reserveData.dates.end - reserveData.dates.start) / msDay;
+    return (reserveData.dates.endDate - reserveData.dates.startDate) / msDay;
   };
 
   const getPriceByDay = () => {
@@ -46,7 +46,7 @@ export default function FormReservedRoom(props) {
             by day
           </Col>
         </Row>
-        <CustomDatepicker2
+        <CustomDatepicker
           setDates={handleChangeDate}
           dates={reserveData.dates}
           type="rangeDouble"
