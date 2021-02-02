@@ -9,6 +9,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
 
+import Icon from "@mdi/react";
+import { mdiArrowRight } from "@mdi/js";
+
 import "./footer.scss";
 
 export default function Footer() {
@@ -137,7 +140,10 @@ export default function Footer() {
                 <p className="mb-3">Get special offers and service news</p>
               </div>
               <Form.Group controlId="ControlInput">
-                <Form.Control type="email" placeholder="Email" />
+                <div className="footer--subscribeContainer position-relative">
+                  <Form.Control type="email" placeholder="Email" />
+                  <Icon path={mdiArrowRight} size={1.2} color={"#BC9CFF"} className="footer--subscribeButton"/>
+                </div>
               </Form.Group>
             </Col>
           </Row>

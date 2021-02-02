@@ -120,7 +120,7 @@ export default function Paginator(props) {
   };
 
   return (
-    <>
+    <div className="d-flex flex-column align-items-center">
       <Pagination>
         {currentPage !== 1 && (
           <Pagination.Prev
@@ -164,6 +164,11 @@ export default function Paginator(props) {
           />
         )}
       </Pagination>
-    </>
+      <div>{`${currentPage * perPage - perPage + 1} - ${
+        currentPage * perPage < elementsLength
+          ? currentPage * perPage
+          : elementsLength
+      } of ${Math.floor(elementsLength / 10) * 10}+ variants`}</div>
+    </div>
   );
 }

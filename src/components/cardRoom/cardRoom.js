@@ -18,13 +18,13 @@ export default function CardRoom(props) {
     <>
       <Card className="cardRoom">
         <Carousel interval={null}>
-          <Carousel.Item>
+          <Carousel.Item onClick={handleClick}>
             <img className="d-block w-100" src={imgRoom} alt="First slide" />
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item onClick={handleClick}>
             <img className="d-block w-100" src={imgRoom} alt="Third slide" />
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item onClick={handleClick}>
             <img className="d-block w-100" src={imgRoom} alt="Third slide" />
           </Carousel.Item>
         </Carousel>

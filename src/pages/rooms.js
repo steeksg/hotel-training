@@ -37,7 +37,7 @@ function RoomsPage(props) {
 
   return (
     <>
-      <Container>
+      <Container className="mb-5">
         <Row>
           <Col className="rooms--sideBar col-12 col-md-5 col-lg-3 col pt-3">
             <RoomsSidebar

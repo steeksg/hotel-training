@@ -26,7 +26,7 @@ export function ModalLogIn(props) {
           <Modal.Body>
             <h3 className="mb-4">Log In</h3>
             <Form>
-              <Form.Group className="mb-1" controlId="formLogInEmail">
+              <Form.Group className="mb-2" controlId="formLogInEmail">
                 <Form.Control type="email" placeholder="Email" />
               </Form.Group>
 
@@ -84,7 +84,7 @@ export function ModalSignUp(props) {
           <Modal.Body>
             <h3 className="mb-4">Sign Up</h3>
             <Form>
-              <Form.Group controlId="formSignUpName" className="mb-1">
+              <Form.Group controlId="formSignUpName" className="mb-2">
                 <Form.Control type="text" placeholder="First name" />
               </Form.Group>
 
@@ -112,19 +112,18 @@ export function ModalSignUp(props) {
                 className="d-flex flex-column"
               >
                 <Form.Label className="mb-0">
-                  <h4 className="mb-1">Date of birth</h4>
+                  <h4 className="mb-2">Date of birth</h4>
                 </Form.Label>
                 <CustomDatepicker date={birthDate} setDate={setBirthDate} />
               </Form.Group>
 
-              <Form.Group controlId="formSignUpEmail">
+              <Form.Group controlId="formSignUpEmail" className="mb-2">
                 <Form.Label className="mb-0">
                   <h4>Service login data</h4>
                 </Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Email"
-                  className="mb-1"
                 />
               </Form.Group>
               <Form.Group controlId="formSignUpPassword">
