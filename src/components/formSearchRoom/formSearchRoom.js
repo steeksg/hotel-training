@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Row, Col, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
 
 import SelectGuests from "../selectGuests/selectGuests";
 import CustomButton from "../customButton/customButton";
@@ -13,6 +14,8 @@ export default function FormSearchRoom({
   handleChangeDate,
   handleChangeGuestsCount,
 }) {
+  let history = useHistory();
+
   return (
     <>
       <Form className="bg-light rounded-lg border-light pt-5 pb-4 px-3 formSearchRoom ">
@@ -41,7 +44,12 @@ export default function FormSearchRoom({
 
           <Row className="mt-3">
             <Col>
-              <CustomButton as={NavLink} to="/rooms" title="find rooms" />
+              <CustomButton
+                handelClick={() => {
+                  history.push(`/rooms`);
+                }}
+                title="find rooms"
+              />
             </Col>
           </Row>
         </Container>

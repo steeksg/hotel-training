@@ -146,7 +146,7 @@ export default function CustomSelect(props) {
                   setShow(!show);
                 }}
               >
-                TO APPLY
+                APPLY
               </Button>
             </Col>
           </Row>
