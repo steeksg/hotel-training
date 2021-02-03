@@ -187,6 +187,7 @@ export default function CustomDatepicker({
 
   const Range = () => {
     return (
+      <div className={type === "rangeSingle" ? "dp--container-rangeSingle" : null}> 
       <DateRangePicker
         startDateId="startDateId"
         endDateId="endDateId"
@@ -207,6 +208,7 @@ export default function CustomDatepicker({
           return <BottomPanel />;
         }}
       />
+      </div>
     );
   };
 
